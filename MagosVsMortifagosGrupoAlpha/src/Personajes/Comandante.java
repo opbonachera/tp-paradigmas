@@ -2,8 +2,8 @@ package Personajes;
 
 public class Comandante extends Mortifago {
 
-	public Comandante(String nombre, int nivelDeMagia, double puntosDeVida) {
-		super(nombre, nivelDeMagia, puntosDeVida);
+	protected Comandante(String nombre) {
+		super(nombre, 6, 60.0);
 	}
 
 }

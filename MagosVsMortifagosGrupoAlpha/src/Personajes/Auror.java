@@ -2,8 +2,8 @@ package Personajes;
 
 public class Auror extends Mago {
 
-	public Auror(String nombre, int nivelDeMagia, double puntosDeVida) {
-		super(nombre, nivelDeMagia, puntosDeVida);
+	protected Auror(String nombre) {
+		super(nombre, 4, 50.0);
 	}
 
 }
