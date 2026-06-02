@@ -43,6 +43,16 @@ public abstract class Personaje {
 		return this.hechizos;
 	}
 	
+	public boolean getEscudo()
+	{
+		return this.escudoActivo;
+	}
+	
+	public double getEscudoPuntosDeVida()
+	{
+		return this.escudoPuntosDeVida;
+	}
+	
 	public void setPuntosDeVida(double NewPuntosDeVida)
 	{
 		this.puntosDeVida = NewPuntosDeVida;
