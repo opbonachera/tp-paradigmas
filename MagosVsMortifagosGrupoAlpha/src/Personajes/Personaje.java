@@ -58,6 +58,8 @@ public abstract class Personaje {
 		this.puntosDeVida = NewPuntosDeVida;
 	}
 	
+	public abstract double getMaxPuntosDeVida();
+	
 	public void setEscudo(boolean activo)
 	{
 		this.escudoActivo = activo;
