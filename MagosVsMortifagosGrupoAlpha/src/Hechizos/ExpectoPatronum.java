@@ -12,10 +12,10 @@ public class ExpectoPatronum implements Hechizo {
 		
 		if( (objetivo.getPuntosDeVida() + curacion) <= objetivo.getMaxPuntosDeVida())
 		{
-			objetivo.setEscudoPuntosDeVida(objetivo.getPuntosDeVida() + curacion);
+			objetivo.setPuntosDeVida(objetivo.getPuntosDeVida() + curacion);
 		} else
 		{
-			objetivo.setEscudoPuntosDeVida(objetivo.getMaxPuntosDeVida());
+			objetivo.setPuntosDeVida(objetivo.getMaxPuntosDeVida());
 		}
 		
 		System.out.println(lanzador.getNombre()       + 

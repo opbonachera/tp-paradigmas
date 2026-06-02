@@ -15,14 +15,30 @@ public class Expelliarmus implements Hechizo {
 			double minimo = Math.min(daño, objetivo.getEscudoPuntosDeVida());
 			objetivo.setEscudoPuntosDeVida(objetivo.getEscudoPuntosDeVida() - minimo);
 			daño -= minimo;
+			
+			if(objetivo.getEscudoPuntosDeVida() <= 0.0)
+			{
+				objetivo.setEscudo(false);
+			}
 		}
 		
-		if(daño != 0.0 && daño < objetivo.getPuntosDeVida())
+		/*if(daño != 0.0 && daño < objetivo.getPuntosDeVida())
 		{
 			objetivo.setPuntosDeVida(objetivo.getPuntosDeVida() - daño);
 		} else
 		{
 			objetivo.setPuntosDeVida(0.0);
+		}*/
+		
+		if(daño != 0.0)
+		{
+			if(daño < objetivo.getPuntosDeVida())
+			{
+				objetivo.setPuntosDeVida(objetivo.getPuntosDeVida() - daño);
+			} else
+			{
+				objetivo.setPuntosDeVida(0.0);
+			}
 		}
 		
 		System.out.println(lanzador.getNombre()                           +
