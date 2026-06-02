@@ -1,5 +1,7 @@
 package Hechizos;
 
-public interface Hechizo {
+import Personajes.Personaje;
 
+public interface Hechizo {
+	void ejecutar(Personaje lanzador, Personaje objetivo);
 }

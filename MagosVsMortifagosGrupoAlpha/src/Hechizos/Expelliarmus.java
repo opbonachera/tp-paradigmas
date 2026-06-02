@@ -1,5 +1,28 @@
 package Hechizos;
 
-public class Expelliarmus implements Hechizo {
+import Personajes.Personaje;
 
+public class Expelliarmus implements Hechizo {
+	private static final double MULTIPLICADOR_DE_DAÑO = 3.5;
+	
+	@Override
+	public void ejecutar(Personaje lanzador, Personaje objetivo)
+	{
+		double daño = lanzador.getNivelDeMagia() * MULTIPLICADOR_DE_DAÑO;
+		
+		if(daño < objetivo.getPuntosDeVida())
+		{
+			objetivo.setPuntosDeVida(objetivo.getPuntosDeVida() - daño);
+		} else
+		{
+			objetivo.setPuntosDeVida(0.0);
+		}
+		
+		System.out.println(lanzador.getNombre()                           +
+				           " lanzó un hechizo de tipo Expelliarmus a "    +
+                           objetivo.getNombre()                           + 
+                           " causando "                                   + 
+                           daño                                           + 
+                           " puntos de daño.");
+	}
 }

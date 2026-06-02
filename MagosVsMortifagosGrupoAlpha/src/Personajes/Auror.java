@@ -1,5 +1,6 @@
 package Personajes;
 
+
 public class Auror extends Mago {
 
 	protected Auror(String nombre) {
