@@ -9,9 +9,4 @@ public class Seguidor extends Mortifago {
 		super(nombre, NIVEL_DE_MAGIA, PUNTOS_DE_VIDA_MAXIMOS);
 	}
 
-	@Override
-	public double getMaxPuntosDeVida() {
-		return PUNTOS_DE_VIDA_MAXIMOS;
-	}
-
 }

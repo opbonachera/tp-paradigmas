@@ -15,7 +15,7 @@ public class FactoryPattern {
         switch (tipo.toLowerCase()) {
             case "seguidor":     return new Seguidor(nombre);
             case "comandante":   return new Comandante(nombre);
-            default:             throw new IllegalArgumentException("Tipo de omrtifago desconocido: " + tipo);
+            default:             throw new IllegalArgumentException("Tipo de mortifago desconocido: " + tipo);
         }
     }
 	

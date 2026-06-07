@@ -1,7 +1,6 @@
 package Personajes;
 
 import Hechizos.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +8,7 @@ public abstract class Personaje {
 	protected String nombre;
 	protected int nivelDeMagia;
 	protected double puntosDeVida;
+	private final double maxPuntosDeVida;
 	protected List<Hechizo> hechizos;
 	protected double escudoPuntosDeVida;
 	protected boolean escudoActivo;
@@ -18,6 +18,7 @@ public abstract class Personaje {
 		this.nombre = nombre;
 		this.nivelDeMagia = nivelDeMagia;
 		this.puntosDeVida = puntosDeVida;
+		this.maxPuntosDeVida = puntosDeVida;
 		this.hechizos = new ArrayList<>();
 		this.escudoActivo = false;
 		this.escudoPuntosDeVida = 0.0;
@@ -58,7 +59,10 @@ public abstract class Personaje {
 		this.puntosDeVida = NewPuntosDeVida;
 	}
 	
-	public abstract double getMaxPuntosDeVida();
+	public double getMaxPuntosDeVida()
+	{
+		return this.maxPuntosDeVida;
+	}
 	
 	public void setEscudo(boolean activo)
 	{
