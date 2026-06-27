@@ -24,7 +24,7 @@ public abstract class Personaje {
 		this.escudoActivo = false;
 		this.escudoPuntosDeVida = 0.0;
 		
-		for(int i = 0; i < 3; i++)
+		for(int i = 0; i < 3; i++) // CAMBIAR EL 3 POR UNA CONSTANTE O VARIABLE Y ANALIZAR SI SE CREAN HECHIZOS POR CATEGORIAS
 		{
 			hechizos.add(fabricaHechizos.crearHechizo()); // revisar que no sean repetidos
 		}
@@ -84,6 +84,10 @@ public abstract class Personaje {
 	{
 		return puntosDeVida > 0;
 	}
+	
+	public void lanzarHechizo(Hechizo hechizo, Personaje objetivo) {
+        hechizo.ejecutar(this, objetivo);
+    }
 	
 	/*protected String getNombre()
 	{
