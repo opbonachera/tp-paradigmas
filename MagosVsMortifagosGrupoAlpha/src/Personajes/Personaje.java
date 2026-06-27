@@ -73,6 +73,11 @@ public abstract class Personaje {
 	{
 		this.escudoPuntosDeVida = puntosDeVidaEscudo;
 	}
+
+	public boolean estaVivo()
+	{
+		return puntosDeVida > 0;
+	}
 	
 	/*protected String getNombre()
 	{
