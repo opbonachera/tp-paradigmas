@@ -1,4 +1,4 @@
-package Hechizos;
+/*package Hechizos;
 
 public class FactoryPattern {
 	
@@ -12,4 +12,8 @@ public class FactoryPattern {
         }
     }
 	
-}
+}*/
+
+
+
+/// YA SE PUEDEN BORRAR, IMPLEMENTE EL ABSTRACT FACTORY

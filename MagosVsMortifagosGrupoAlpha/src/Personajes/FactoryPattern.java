@@ -1,4 +1,4 @@
-package Personajes;
+/*package Personajes;
 
 public class FactoryPattern {
 	
@@ -19,4 +19,7 @@ public class FactoryPattern {
         }
     }
 	
-}
+}*/
+
+
+/// YA SE PUEDEN BORRAR, IMPLEMENTE EL ABSTRACT FACTORY
