@@ -18,9 +18,9 @@ public class FabricaMortifagos implements FabricaBando {
 	public Hechizo crearHechizo(String tipo) {
 		switch (tipo.toLowerCase()) {
 	        case "avadakedavra":    return new AvadaKedavra();
-//	        case "expectopatronum": return new ExpectoPatronum();
+  	        case "expectopatronum": return new ExpectoPatronum();
 	        case "expelliarmus":    return new Expelliarmus();
-//	        case "protego":         return new Protego();
+  	        case "protego":         return new Protego();
 	        default:                throw new IllegalArgumentException("Tipo de hechizo desconocido o no disponible para Mortifagos: " + tipo);
 	    }
 	}

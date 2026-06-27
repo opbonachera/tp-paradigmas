@@ -18,7 +18,7 @@ public class FabricaMagos implements FabricaBando {
 	@Override
 	public Hechizo crearHechizo(String tipo) {
 		switch (tipo.toLowerCase()) {
-//	        case "avadakedavra":    return new AvadaKedavra();
+  	        case "avadakedavra":    return new AvadaKedavra();
 	        case "expectopatronum": return new ExpectoPatronum();
 	        case "expelliarmus":    return new Expelliarmus();
 	        case "protego":         return new Protego();
