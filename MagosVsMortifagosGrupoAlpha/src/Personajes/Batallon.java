@@ -15,5 +15,20 @@ public class Batallon {
 	List<Hechizo> hechizosEnOrden = new LinkedList<>();
 	Map<String, Integer> XXXXXXX = new HashMap<>(); //CAMBIAR
 	Set<String> XXXXX = HashSet<String>(); //CAMBIAR
+	
+	public void agegarPersonaje(Personaje p) // hay que pasarlo a boolean?
+	{
+		unidades.add(p);
+	}
+	
+	public void sacarPersonaje(Personaje p)
+	{
+		unidades.remove(p);
+	}
+	
+	public void eliminarBatallon()
+	{
+		unidades.clear();
+	}
 
 }
