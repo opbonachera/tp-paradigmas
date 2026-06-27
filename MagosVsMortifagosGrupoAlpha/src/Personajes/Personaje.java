@@ -12,6 +12,7 @@ public abstract class Personaje {
 	protected List<Hechizo> hechizos;
 	protected double escudoPuntosDeVida;
 	protected boolean escudoActivo;
+	private FabricaDeHechizos fabricaHechizos = new FabricaDeHechizos();
 	
 	public Personaje(String nombre, int nivelDeMagia, double puntosDeVida)
 	{
@@ -22,6 +23,11 @@ public abstract class Personaje {
 		this.hechizos = new ArrayList<>();
 		this.escudoActivo = false;
 		this.escudoPuntosDeVida = 0.0;
+		
+		for(int i = 0; i < 3; i++)
+		{
+			hechizos.add(fabricaHechizos.crearHechizo()); // revisar que no sean repetidos
+		}
 	}
 	
 	public String getNombre()

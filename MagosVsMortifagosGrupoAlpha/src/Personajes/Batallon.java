@@ -30,5 +30,17 @@ public class Batallon {
 	{
 		unidades.clear();
 	}
+	
+	public boolean hayPersonajesVivos()
+	{
+		for(Personaje p : unidades)
+		{
+			if(p.estaVivo())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 
 }
