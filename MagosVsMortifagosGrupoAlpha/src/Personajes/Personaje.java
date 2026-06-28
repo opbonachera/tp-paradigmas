@@ -82,7 +82,7 @@ public abstract class Personaje {
 
 	public boolean estaVivo()
 	{
-		return puntosDeVida > 0;
+		return puntosDeVida > 0d;
 	}
 	
 	public void lanzarHechizo(Hechizo hechizo, Personaje objetivo) {

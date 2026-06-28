@@ -40,5 +40,15 @@ class PersonajesTest {
 		assertEquals(6 ,snape.getNivelDeMagia());
 	}
 	
-
+	@Test
+	void Test_EstaVivo() {
+		Personaje malfoy = new Seguidor("Lucius Malfoy");
+		Personaje snape = new Comandante("Severus Snape");
+		
+		snape.setPuntosDeVida(0d);
+		
+		assertFalse(snape.estaVivo());
+		assertTrue(malfoy.estaVivo());
+	}
+	
 }

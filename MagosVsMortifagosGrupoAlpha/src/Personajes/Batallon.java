@@ -16,7 +16,7 @@ public class Batallon {
 	
 	// FALTAN TODAS LAS IMPLEMENTACIONES DE LIST (CREO QUE NO LO IBAMOS A USAR), MAP Y SET
 	
-	public void agegarPersonaje(Personaje p) // hay que pasarlo a boolean?
+	public void agregarPersonaje(Personaje p) // hay que pasarlo a boolean?
 	{
 		unidades.add(p);
 	}
@@ -35,6 +35,7 @@ public class Batallon {
 	{
 		for(Personaje p : unidades)
 		{
+			System.out.println("Vida de " + p.getNombre() + ": " + p.getPuntosDeVida());
 			if(p.estaVivo())
 			{
 				return true;
