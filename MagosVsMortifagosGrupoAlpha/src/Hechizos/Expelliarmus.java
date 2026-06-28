@@ -8,7 +8,7 @@ public class Expelliarmus implements Hechizo {
 	@Override
 	public void ejecutar(Personaje lanzador, Personaje objetivo)
 	{
-		double daño = lanzador.getNivelDeMagia() * MULTIPLICADOR_DE_DAÑO;
+		double daño = lanzador.getNivelDeMagiaOscura() * MULTIPLICADOR_DE_DAÑO;
 		
 		if(objetivo.getEscudo() == true)
 		{

@@ -8,7 +8,7 @@ public class ExpectoPatronum implements Hechizo {
 	@Override
 	public void ejecutar(Personaje lanzador, Personaje objetivo)
 	{
-		double curacion = lanzador.getNivelDeMagia() * MULTIPLICADOR_DE_CURACION;
+		double curacion = lanzador.getNivelDeMagiaPatronus() * MULTIPLICADOR_DE_CURACION;
 		
 		if( (objetivo.getPuntosDeVida() + curacion) <= objetivo.getMaxPuntosDeVida())
 		{

@@ -14,8 +14,8 @@ public class Main {
 		
 		for(int i = 0; i < 5; i++)
 		{
-			batallonDeMagos.agegarPersonaje(fabrica.crearMago());
-			batallonDeMortifagos.agegarPersonaje(fabrica.crearMortifago());
+			batallonDeMagos.agregarPersonaje(fabrica.crearMago());
+			batallonDeMortifagos.agregarPersonaje(fabrica.crearMortifago());
 		}
 
 		while(batallonDeMagos.hayPersonajesVivos() && batallonDeMortifagos.hayPersonajesVivos())

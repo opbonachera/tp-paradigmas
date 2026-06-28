@@ -6,18 +6,23 @@ import java.util.List;
 
 public abstract class Personaje {
 	protected String nombre;
-	protected int nivelDeMagia;
+//	protected int nivelDeMagia;
+	protected int nivelDeMagiaOcura;
+	protected int nivelDeMagiaPatronus;
+	protected int nivelDeMagiaDefensiva;
 	protected double puntosDeVida;
 	private final double maxPuntosDeVida;
 	protected List<Hechizo> hechizos;
 	protected double escudoPuntosDeVida;
 	protected boolean escudoActivo;
 	private FabricaDeHechizos fabricaHechizos = new FabricaDeHechizos();
-	
-	public Personaje(String nombre, int nivelDeMagia, double puntosDeVida)
-	{
+
+	public Personaje(String nombre, double puntosDeVida, int nivelDeMagiaOscura, int nivelDeMagiaPatronus,
+			int nivelDeMagiaDefensiva) {
 		this.nombre = nombre;
-		this.nivelDeMagia = nivelDeMagia;
+		this.nivelDeMagiaOcura = nivelDeMagiaOscura;
+		this.nivelDeMagiaPatronus = nivelDeMagiaPatronus;
+		this.nivelDeMagiaDefensiva = nivelDeMagiaDefensiva;
 		this.puntosDeVida = puntosDeVida;
 		this.maxPuntosDeVida = puntosDeVida;
 		this.hechizos = new ArrayList<>();
@@ -29,15 +34,25 @@ public abstract class Personaje {
 			hechizos.add(fabricaHechizos.crearHechizo()); // revisar que no sean repetidos. Podemos usar un hashSet en vez de un ArrayList
 		}
 	}
-	
+
 	public String getNombre()
 	{
 		return this.nombre;
 	}
 	
-	public int getNivelDeMagia()
+	public int getNivelDeMagiaOscura()
 	{
-		return this.nivelDeMagia;
+		return this.nivelDeMagiaOcura;
+	}
+	
+	public int getNivelDeMagiaPatronus()
+	{
+		return this.nivelDeMagiaPatronus;
+	}
+	
+	public int getNivelDeMagiaDefensiva()
+	{
+		return this.nivelDeMagiaDefensiva;
 	}
 	
 	public double getPuntosDeVida()
