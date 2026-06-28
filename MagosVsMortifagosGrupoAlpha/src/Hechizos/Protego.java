@@ -8,8 +8,8 @@ public class Protego implements Hechizo {
 	@Override
 	public void ejecutar(Personaje lanzador, Personaje objetivo)
 	{
-		lanzador.setEscudo(true);
-		lanzador.setEscudoPuntosDeVida(PUNTOS_DE_VIDA_ESCUDO);
+		objetivo.setEscudo(true);
+		objetivo.setEscudoPuntosDeVida(PUNTOS_DE_VIDA_ESCUDO); // Yo haría objetivo.getEscudoPuntosDeVida + PUNTOS_DE_VIDA_ESCUDO.
 		
 		System.out.println(lanzador.getNombre() + 
 				           " alzó su varita y exclamó ¡Protego! El escudo está activo.");

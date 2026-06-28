@@ -26,7 +26,7 @@ public abstract class Personaje {
 		
 		for(int i = 0; i < 3; i++) // CAMBIAR EL 3 POR UNA CONSTANTE O VARIABLE Y ANALIZAR SI SE CREAN HECHIZOS POR CATEGORIAS
 		{
-			hechizos.add(fabricaHechizos.crearHechizo()); // revisar que no sean repetidos
+			hechizos.add(fabricaHechizos.crearHechizo()); // revisar que no sean repetidos. Podemos usar un hashSet en vez de un ArrayList
 		}
 	}
 	
