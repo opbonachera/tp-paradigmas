@@ -1,17 +1,18 @@
 package Personajes;
 
+import Estados.Estado;
 import Hechizos.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Personaje {
 	protected String nombre;
-//	protected int nivelDeMagia;
 	protected int nivelDeMagiaOcura;
 	protected int nivelDeMagiaPatronus;
 	protected int nivelDeMagiaDefensiva;
 	protected double puntosDeVida;
 	private final double maxPuntosDeVida;
+	private final List<Estado> estados;
 	protected List<Hechizo> hechizos;
 	protected double escudoPuntosDeVida;
 	protected boolean escudoActivo;
@@ -26,6 +27,7 @@ public abstract class Personaje {
 		this.puntosDeVida = puntosDeVida;
 		this.maxPuntosDeVida = puntosDeVida;
 		this.hechizos = new ArrayList<>();
+		this.estados = new ArrayList<>();
 		this.escudoActivo = false;
 		this.escudoPuntosDeVida = 0.0;
 		
@@ -95,6 +97,45 @@ public abstract class Personaje {
 		this.escudoPuntosDeVida = puntosDeVidaEscudo;
 	}
 
+	public void agregarEstado(Estado estado)
+	{
+		this.estados.add(estado);
+		System.out.println("El personaje " + this.getNombre() +
+							" ha quedado en estado " + estado.toString());
+	}
+
+	public boolean estaInmune()
+	{
+		for(Estado estado : this.estados)
+		{
+			if(estado.bloqueaDanio())
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public void procesarEstadosInicioDelTurno()
+	{
+		for(Estado estado : this.estados)
+		{
+			estado.aplicarAlInicioDelTurno(this);
+		}
+	}
+
+	public void procesarEstadosFinDelTurno()
+	{
+		for(Estado estado : this.estados)
+		{
+			estado.aplicarAlFinalDelTurno(this);
+			estado.consumirTurno();
+		}
+
+		this.estados.removeIf(Estado::estaObsoleto);
+	}
+
 	public boolean estaVivo()
 	{
 		return puntosDeVida > 0d;
@@ -103,29 +144,4 @@ public abstract class Personaje {
 	public void lanzarHechizo(Hechizo hechizo, Personaje objetivo) {
         hechizo.ejecutar(this, objetivo);
     }
-	
-	/*protected String getNombre()
-	{
-		return this.nombre;
-	}
-	
-	protected int getNivelDeMagia()
-	{
-		return this.nivelDeMagia;
-	}
-	
-	protected double getPuntosDeVida()
-	{
-		return this.puntosDeVida;
-	}
-	
-	protected List<Hechizo> getHechizos()
-	{
-		return this.hechizos;
-	}
-	
-	protected void setPuntosDeVida(double puntosDeVida)
-	{
-		this.puntosDeVida = puntosDeVida;
-	}*/
 }
