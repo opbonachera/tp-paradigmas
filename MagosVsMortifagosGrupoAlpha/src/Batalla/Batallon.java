@@ -5,10 +5,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import Hechizos.Hechizo;
 import Personajes.Personaje;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Batallon implements Combatiente{
 	
@@ -38,7 +37,6 @@ public class Batallon implements Combatiente{
 	{
 		for(Personaje p : personajes)
 		{
-			System.out.println("Vida de " + p.getNombre() + ": " + p.getPuntosDeVida());
 			if(p.estaVivo())
 			{
 				return true;
@@ -63,43 +61,36 @@ public class Batallon implements Combatiente{
 		}
 	}
 	
-	public void atacar(Batallon enemigo) {
+	@Override
+	public void atacar(Combatiente enemigo) {
+	    if (!(enemigo instanceof Batallon enemigoB)) return;
+
 	    Random random = new Random();
 	    this.procesarEstadosInicioDelTurno();
 
+	    List<Personaje> vivosEnemigos = enemigoB.personajes.stream()
+	        .filter(Personaje::estaVivo).toList();
+
 	    for (Personaje p : this.personajes) {
+	        if (!p.estaVivo()) continue;
+	        if (vivosEnemigos.isEmpty()) break;
 
 	        List<Hechizo> hechizos = p.getHechizos();
-	        //Elegir un hechizo al azar
-	        Hechizo hechizoElegido = hechizos.get(random.nextInt(hechizos.size()));
-	        //Si ya fue lanzado en la ronda, elijo otro
-	        while (hechizosEnOrden.contains(hechizoElegido)) {
-	            hechizoElegido = hechizos.get(random.nextInt(hechizos.size()));
-	        }
+	       
+	        Hechizo hechizoElegido = hechizos.stream()
+	            .filter(h -> !hechizosEnOrden.contains(h))
+	            .findFirst()
+	            .orElse(hechizos.get(random.nextInt(hechizos.size())));
 
-	        Personaje personajeAleatorio = null;
-	        //Elegir un personaje rival al azar
-	        if (!enemigo.personajes.isEmpty()) {
-	            personajeAleatorio = enemigo.personajes.get(
-	                ThreadLocalRandom.current().nextInt(enemigo.personajes.size())
-	            );
-	        }
+	        Personaje objetivo = vivosEnemigos.get(random.nextInt(vivosEnemigos.size()));
 
-	        //Lanzarle el hechizo al rival
-	        p.lanzarHechizo(hechizoElegido, personajeAleatorio);
-	        
-	        //Guardar el hechizo lanzado
+	        p.lanzarHechizo(hechizoElegido, objetivo);
 	        hechizosEnOrden.add(hechizoElegido);
-	        
-	        //Guardar el movimiento del personaje
 	        movimientosPartida.put(p, hechizoElegido);
 	    }
-	    
-	    //Una vez que todos tiraron sus hechizos, limpiar la lista
+
 	    hechizosEnOrden.clear();
 	    this.procesarEstadosFinDelTurno();
-	    
-	    
 	}
 
 }
