@@ -46,9 +46,26 @@ public class Batallon implements Combatiente{
 		}
 		return false;
 	}
+
+	private void procesarEstadosInicioDelTurno()
+	{
+		for(Personaje personaje : this.personajes)
+		{
+			personaje.procesarEstadosInicioDelTurno();
+		}
+	}
+
+	private void procesarEstadosFinDelTurno()
+	{
+		for(Personaje personaje : this.personajes)
+		{
+			personaje.procesarEstadosFinDelTurno();
+		}
+	}
 	
 	public void atacar(Batallon enemigo) {
 	    Random random = new Random();
+	    this.procesarEstadosInicioDelTurno();
 
 	    for (Personaje p : this.personajes) {
 
@@ -80,6 +97,7 @@ public class Batallon implements Combatiente{
 	    
 	    //Una vez que todos tiraron sus hechizos, limpiar la lista
 	    hechizosEnOrden.clear();
+	    this.procesarEstadosFinDelTurno();
 	    
 	    
 	}
