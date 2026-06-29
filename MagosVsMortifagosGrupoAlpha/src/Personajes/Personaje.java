@@ -1,18 +1,22 @@
 package Personajes;
 
+import Batalla.Combatiente;
 import Estados.Estado;
 import Hechizos.*;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
-public abstract class Personaje {
+public abstract class Personaje implements Combatiente {
 	protected String nombre;
 	protected int nivelDeMagiaOcura;
 	protected int nivelDeMagiaPatronus;
 	protected int nivelDeMagiaDefensiva;
 	protected double puntosDeVida;
 	private final double maxPuntosDeVida;
-	private final List<Estado> estados;
+	private final Set<Estado> estados;
 	protected List<Hechizo> hechizos;
 	protected double escudoPuntosDeVida;
 	protected boolean escudoActivo;
@@ -27,7 +31,7 @@ public abstract class Personaje {
 		this.puntosDeVida = puntosDeVida;
 		this.maxPuntosDeVida = puntosDeVida;
 		this.hechizos = new ArrayList<>();
-		this.estados = new ArrayList<>();
+		this.estados = new LinkedHashSet<>();
 		this.escudoActivo = false;
 		this.escudoPuntosDeVida = 0.0;
 		
@@ -137,7 +141,7 @@ public abstract class Personaje {
 		{
 			if(estado.estaObsoleto())
 			{
-				System.out.println("El estado " + estado + " de " + this.getNombre() + " caducó.");
+				estado.alCaducar(this);
 			}
 		}
 
@@ -151,5 +155,17 @@ public abstract class Personaje {
 	
 	public void lanzarHechizo(Hechizo hechizo, Personaje objetivo) {
         hechizo.ejecutar(this, objetivo);
+    }
+
+    @Override
+    public boolean hayPersonajesVivos() {
+        return estaVivo();
+    }
+
+    @Override
+    public void atacar(Combatiente enemigo) {
+        if (!estaVivo() || !enemigo.hayPersonajesVivos()) return;
+        Hechizo hechizo = hechizos.get(new Random().nextInt(hechizos.size()));
+        lanzarHechizo(hechizo, (Personaje) enemigo);
     }
 }
