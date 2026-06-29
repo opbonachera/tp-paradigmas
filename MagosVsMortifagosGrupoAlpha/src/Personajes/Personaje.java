@@ -133,6 +133,14 @@ public abstract class Personaje {
 			estado.consumirTurno();
 		}
 
+		for(Estado estado : this.estados)
+		{
+			if(estado.estaObsoleto())
+			{
+				System.out.println("El estado " + estado + " de " + this.getNombre() + " caducó.");
+			}
+		}
+
 		this.estados.removeIf(Estado::estaObsoleto);
 	}
 
