@@ -3,10 +3,13 @@ package Personajes;
 public class Comandante extends Mortifago {
 	
 	private static final double PUNTOS_DE_VIDA_MAXIMOS = 60.0;
-	private static final int NIVEL_DE_MAGIA = 6;
+	private static final int NIVEL_DE_MAGIA_OSCURA = 10;
+	private static final int NIVEL_DE_MAGIA_PATRONUS = 10;
+	private static final int NIVEL_DE_MAGIA_DEFENSIVA = 10;
 	
 	public Comandante(String nombre) {
-		super(nombre, NIVEL_DE_MAGIA, PUNTOS_DE_VIDA_MAXIMOS);
+		super(nombre, PUNTOS_DE_VIDA_MAXIMOS, NIVEL_DE_MAGIA_OSCURA,
+				NIVEL_DE_MAGIA_PATRONUS, NIVEL_DE_MAGIA_DEFENSIVA);
 	}
 
 }

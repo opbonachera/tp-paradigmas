@@ -39,7 +39,7 @@ public class FabricaDePersonajes {
 	        case 0: return new Estudiante(nombresGenericosMagos[nombreAleatorio]); // estudiante
 	        case 1: return new Profesor(nombresGenericosMagos[nombreAleatorio]); // profesor
 	        case 2: return new Auror(nombresGenericosMagos[nombreAleatorio]); // auror
-	        default: throw new IllegalArgumentException("No se pudo crear el Mago!!!"); // hay que revisar porque no es IllegalArgumentException
+	        default: throw new IllegalStateException("No se pudo crear el Mago!!!"); /
 	    }
 	}
 	
@@ -50,7 +50,7 @@ public class FabricaDePersonajes {
 		switch (tipoAleatorio) {
 	        case 0: return new Seguidor(nombresGenericosMortifagos[nombreAleatorio]); // seguidor
 	        case 1: return new Comandante(nombresGenericosMortifagos[nombreAleatorio]); // comandante
-	        default: throw new IllegalArgumentException("No se pudo crear el Mortifago!!!"); // hay que revisar porque no es IllegalArgumentException
+	        default: throw new IllegalStateException("No se pudo crear el Mortifago!!!"); // hay que revisar porque no es IllegalArgumentException
 		}
 	}
 	
