@@ -20,10 +20,20 @@ class PersonajesTest {
 		assertEquals(30 ,gandalf.getPuntosDeVida());
 		assertEquals(50 ,alastor.getPuntosDeVida());
 		
-		// Testeo iniciar nivel de magia
-		assertEquals(2 ,harryPotter.getNivelDeMagia());
-		assertEquals(5 ,gandalf.getNivelDeMagia());
-		assertEquals(4 ,alastor.getNivelDeMagia());
+		// Testeo Niveles de magia para Estudiante
+		assertEquals(10, harryPotter.getNivelDeMagiaDefensiva());
+		assertEquals(10, harryPotter.getNivelDeMagiaOscura());
+		assertEquals(10, harryPotter.getNivelDeMagiaPatronus());
+		
+		// Testeo Niveles de magia para Auror
+		assertEquals(10, alastor.getNivelDeMagiaDefensiva());
+		assertEquals(10, alastor.getNivelDeMagiaOscura());
+		assertEquals(10, alastor.getNivelDeMagiaPatronus());
+		
+		// Testeo Niveles de magia para 
+		assertEquals(10, alastor.getNivelDeMagiaDefensiva());
+		assertEquals(10, alastor.getNivelDeMagiaOscura());
+		assertEquals(10, alastor.getNivelDeMagiaPatronus());
 	}
 
 	@Test
@@ -32,12 +42,18 @@ class PersonajesTest {
 		Personaje snape = new Comandante("Severus Snape");
 		
 		// Testeo iniciar puntos de vida
-		assertEquals(25 ,malfoy.getPuntosDeVida());
-		assertEquals(60 ,snape.getPuntosDeVida());
+		assertEquals(25, malfoy.getPuntosDeVida());
+		assertEquals(60, snape.getPuntosDeVida());
 		
-		// Testeo iniciar nivel de magia
-		assertEquals(3 ,malfoy.getNivelDeMagia());
-		assertEquals(6 ,snape.getNivelDeMagia());
+		// Testeo iniciar nivel de magia para Comandante
+		assertEquals(10, malfoy.getNivelDeMagiaDefensiva());
+		assertEquals(10, malfoy.getNivelDeMagiaOscura());
+		assertEquals(10, malfoy.getNivelDeMagiaPatronus());
+				
+		// Testeo iniciar nivel de magia para Seguidor
+		assertEquals(10, malfoy.getNivelDeMagiaDefensiva());
+		assertEquals(10, malfoy.getNivelDeMagiaOscura());
+		assertEquals(10, malfoy.getNivelDeMagiaPatronus());
 	}
 	
 	@Test

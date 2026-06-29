@@ -5,7 +5,7 @@ import Personajes.Personaje;
 
 public class Protego implements Hechizo {
 	private static final double PUNTOS_DE_VIDA_ESCUDO = 10.0;
-	private static final int TURNOS_INMUNE = 2;
+	private static final int TURNOS_INMUNE = 1;
 	
 	@Override
 	public void ejecutar(Personaje lanzador, Personaje objetivo)

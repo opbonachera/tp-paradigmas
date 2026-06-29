@@ -12,7 +12,7 @@ public class Expelliarmus implements Hechizo {
 	{
 		double daño = lanzador.getNivelDeMagiaOscura() * MULTIPLICADOR_DE_DAÑO;
 		
-		if(objetivo.getEscudo() == true)
+		if(objetivo.getEscudo())
 		{
 			double minimo = Math.min(daño, objetivo.getEscudoPuntosDeVida());
 			objetivo.setEscudoPuntosDeVida(objetivo.getEscudoPuntosDeVida() - minimo);
