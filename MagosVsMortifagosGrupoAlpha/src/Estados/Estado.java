@@ -9,14 +9,9 @@ public abstract class Estado {
         this.turnosRestantes = turnosRestantes;
     }
 
-    public void aplicarAlFinalDelTurno(Personaje objetivo) {
-        // Hook opcional.
-    }
-
-    public void aplicarAlInicioDelTurno(Personaje objetivo) {
-        // Hook opcional.
-    }
-
+    public void aplicarAlFinalDelTurno(Personaje objetivo) {}
+    public void aplicarAlInicioDelTurno(Personaje objetivo) {}
+    
     public boolean bloqueaDanio() {
         return false;
     }
@@ -28,4 +23,5 @@ public abstract class Estado {
     public boolean estaObsoleto() {
         return this.turnosRestantes < 1;
     }
+    
 }

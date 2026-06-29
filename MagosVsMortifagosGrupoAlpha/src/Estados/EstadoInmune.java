@@ -1,7 +1,5 @@
 package Estados;
 
-import Personajes.Personaje;
-
 public class EstadoInmune extends Estado {
     public EstadoInmune(int turnosRestantes) {
         super(turnosRestantes);
@@ -10,5 +8,10 @@ public class EstadoInmune extends Estado {
     @Override
     public boolean bloqueaDanio() {
         return true;
+    }
+    
+    @Override
+    public String toString() {
+        return "Inmunidad";
     }
 }

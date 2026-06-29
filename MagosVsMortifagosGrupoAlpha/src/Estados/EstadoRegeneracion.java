@@ -10,9 +10,7 @@ public class EstadoRegeneracion extends Estado {
     }
 
     @Override
-    public void aplicarAlInicioDelTurno(Personaje objetivo) {
-        // Este estado aplica su efecto al final del turno.
-    }
+    public void aplicarAlInicioDelTurno(Personaje objetivo) {}
 
     @Override
     public void aplicarAlFinalDelTurno(Personaje objetivo) {
@@ -21,5 +19,10 @@ public class EstadoRegeneracion extends Estado {
             nuevaVida = objetivo.getMaxPuntosDeVida();
         }
         objetivo.setPuntosDeVida(nuevaVida);
+    }
+    
+    @Override
+    public String toString() {
+        return "Regeneración";
     }
 }

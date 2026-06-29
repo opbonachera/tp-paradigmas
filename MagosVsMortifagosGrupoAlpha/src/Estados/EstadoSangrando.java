@@ -19,7 +19,10 @@ public class EstadoSangrando extends Estado {
     }
 
     @Override
-    public void aplicarAlFinalDelTurno(Personaje objetivo) {
-        // Este estado aplica su efecto al inicio del turno.
+    public void aplicarAlFinalDelTurno(Personaje objetivo) {}
+    
+    @Override
+    public String toString() {
+        return "Sangrando";
     }
 }
