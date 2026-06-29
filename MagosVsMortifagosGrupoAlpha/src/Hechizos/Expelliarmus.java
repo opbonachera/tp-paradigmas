@@ -23,16 +23,6 @@ public class Expelliarmus implements Hechizo {
 				objetivo.setEscudo(false);
 			}
 		}
-
-		objetivo.agregarEstado(new EstadoSangrando(TURNOS_SANGRANDO));
-		
-		/*if(daño != 0.0 && daño < objetivo.getPuntosDeVida())
-		{
-			objetivo.setPuntosDeVida(objetivo.getPuntosDeVida() - daño);
-		} else
-		{
-			objetivo.setPuntosDeVida(0.0);
-		}*/
 		
 		if(daño != 0.0)
 		{
@@ -51,5 +41,8 @@ public class Expelliarmus implements Hechizo {
                            " causando "                                   + 
                            daño                                           + 
                            " puntos de daño.");
+
+		objetivo.agregarEstado(new EstadoSangrando(TURNOS_SANGRANDO));
+		
 	}
 }
