@@ -2,8 +2,6 @@ package Hechizos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 
 import Personajes.Comandante;
@@ -17,18 +15,8 @@ class HechizosTest {
 	void Test_AvadaKedavra() {
 		Personaje gandalf = new Profesor("Gandalf");
 		Personaje snape = new Comandante("Severus Snape");
-		List<Hechizo> hechizos = gandalf.getHechizos();
-		Hechizo avadaEncontrado = null;
-		for(Hechizo h : hechizos) {
-			if(h instanceof AvadaKedavra) {
-				avadaEncontrado = h;
-				break;
-			}
-		}
-		
-		if(avadaEncontrado != null){
-			gandalf.lanzarHechizo(avadaEncontrado, snape);
-		}
+		Hechizo avada = new AvadaKedavra();
+		gandalf.lanzarHechizo(avada, snape);
 		
 		assertFalse(snape.estaVivo());
 	}
@@ -37,61 +25,41 @@ class HechizosTest {
 	void Test_ExpectoPatronum() {
 		Personaje gandalf = new Profesor("Gandalf");
 		Personaje harry = new Estudiante("Harry Potter");
-		List<Hechizo> hechizos = gandalf.getHechizos();
-		Hechizo expectoEncontrado = null;
-		for(Hechizo h : hechizos) {
-			if(h instanceof ExpectoPatronum) {
-				expectoEncontrado = h;
-				break;
-			}
-		}
-		
-		if(expectoEncontrado != null){
-			harry.setPuntosDeVida(1.00);
-			gandalf.lanzarHechizo(expectoEncontrado, harry);
-		}
-		
+		harry.setPuntosDeVida(1.00);
+		Hechizo expecto = new ExpectoPatronum();
+		gandalf.lanzarHechizo(expecto, harry);
+
 		assertEquals(10, harry.getPuntosDeVida());
+
+		harry.setPuntosDeVida(7.0);
+		harry.procesarEstadosFinDelTurno();
+		assertEquals(8.0, harry.getPuntosDeVida());
 	}
 	
 	@Test
 	void Test_Expelliarmus() {
 		Personaje gandalf = new Profesor("Gandalf");
 		Personaje snape = new Comandante("Severus Snape");
-		List<Hechizo> hechizos = gandalf.getHechizos();
-		Hechizo expelliEncontrado = null;
-		for(Hechizo h : hechizos) {
-			if(h instanceof Expelliarmus) {
-				expelliEncontrado = h;
-				break;
-			}
-		}
-		
-		if(expelliEncontrado != null){
-			gandalf.lanzarHechizo(expelliEncontrado, snape);
-		}
-		
+		Hechizo expelliarmus = new Expelliarmus();
+		gandalf.lanzarHechizo(expelliarmus, snape);
+
 		assertEquals(42.5, snape.getPuntosDeVida());
+
+		snape.procesarEstadosInicioDelTurno();
+		assertEquals(42.0, snape.getPuntosDeVida());
 	}
 	
 	@Test
 	void Test_Protego() {
 		Personaje gandalf = new Profesor("Gandalf");
 		Personaje harry = new Estudiante("Harry Potter");
-		List<Hechizo> hechizos = gandalf.getHechizos();
-		Hechizo protegoEncontrado = null;
-		for(Hechizo h : hechizos) {
-			if(h instanceof Protego) {
-				protegoEncontrado = h;
-				break;
-			}
-		}
-		
-		if(protegoEncontrado != null){
-			gandalf.lanzarHechizo(protegoEncontrado, harry);
-		}
-		
+		Hechizo protego = new Protego();
+		Hechizo expelliarmus = new Expelliarmus();
+		gandalf.lanzarHechizo(protego, harry);
+		gandalf.lanzarHechizo(expelliarmus, harry);
+
 		assertTrue(harry.getEscudo());
 		assertEquals(10, harry.getEscudoPuntosDeVida());
+		assertEquals(10.0, harry.getPuntosDeVida());
 	}
 }

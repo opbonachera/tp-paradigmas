@@ -1,9 +1,11 @@
 package Hechizos;
 
+import Estados.EstadoSangrando;
 import Personajes.Personaje;
 
 public class Expelliarmus implements Hechizo {
 	private static final double MULTIPLICADOR_DE_DAÑO = 3.5;
+	private static final int TURNOS_SANGRANDO = 2;
 	
 	@Override
 	public void ejecutar(Personaje lanzador, Personaje objetivo)
@@ -21,6 +23,8 @@ public class Expelliarmus implements Hechizo {
 				objetivo.setEscudo(false);
 			}
 		}
+
+		objetivo.agregarEstado(new EstadoSangrando(TURNOS_SANGRANDO));
 		
 		/*if(daño != 0.0 && daño < objetivo.getPuntosDeVida())
 		{

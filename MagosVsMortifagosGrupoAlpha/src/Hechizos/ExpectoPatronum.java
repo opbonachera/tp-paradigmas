@@ -1,9 +1,11 @@
 package Hechizos;
 
+import Estados.EstadoRegeneracion;
 import Personajes.Personaje;
 
 public class ExpectoPatronum implements Hechizo {
 	private static final double MULTIPLICADOR_DE_CURACION = 4.5;
+	private static final int TURNOS_REGENERACION = 2;
 	
 	@Override
 	public void ejecutar(Personaje lanzador, Personaje objetivo)
@@ -17,6 +19,8 @@ public class ExpectoPatronum implements Hechizo {
 		{
 			objetivo.setPuntosDeVida(objetivo.getMaxPuntosDeVida());
 		}
+
+		objetivo.agregarEstado(new EstadoRegeneracion(TURNOS_REGENERACION));
 		
 		System.out.println(lanzador.getNombre()       + 
 				           " conjuró un Patronum. "   + 
