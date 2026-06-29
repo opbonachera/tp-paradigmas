@@ -12,9 +12,9 @@ public class Protego implements Hechizo {
 	{
 		objetivo.setEscudo(true);
 		objetivo.setEscudoPuntosDeVida(PUNTOS_DE_VIDA_ESCUDO); // Yo haría objetivo.getEscudoPuntosDeVida + PUNTOS_DE_VIDA_ESCUDO.
-		objetivo.agregarEstado(new EstadoInmune(TURNOS_INMUNE));
 		
 		System.out.println(lanzador.getNombre() + 
 				           " alzó su varita y exclamó ¡Protego! El escudo está activo.");
+		objetivo.agregarEstado(new EstadoInmune(TURNOS_INMUNE));
 	}
 }

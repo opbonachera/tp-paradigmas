@@ -20,7 +20,7 @@ public class ExpectoPatronum implements Hechizo {
 			objetivo.setPuntosDeVida(objetivo.getMaxPuntosDeVida());
 		}
 
-		objetivo.agregarEstado(new EstadoRegeneracion(TURNOS_REGENERACION));
+		
 		
 		System.out.println(lanzador.getNombre()       + 
 				           " conjuró un Patronum. "   + 
@@ -28,5 +28,7 @@ public class ExpectoPatronum implements Hechizo {
 				           " recuperó "               + 
 				           curacion                   + 
 				           " Puntos de Vida.");
+		
+		objetivo.agregarEstado(new EstadoRegeneracion(TURNOS_REGENERACION));
 	}
 }
