@@ -1,5 +1,7 @@
 package Estados;
 
+import Personajes.Personaje;
+
 public class EstadoInmune extends Estado {
     public EstadoInmune(int turnosRestantes) {
         super(turnosRestantes);
@@ -8,6 +10,11 @@ public class EstadoInmune extends Estado {
     @Override
     public boolean bloqueaDanio() {
         return true;
+    }
+
+    @Override
+    public void alCaducar(Personaje objetivo) {
+        System.out.println(objetivo.getNombre() + " perdió la inmunidad.");
     }
     
     @Override

@@ -11,11 +11,17 @@ public class EstadoSangrando extends Estado {
 
     @Override
     public void aplicarAlInicioDelTurno(Personaje objetivo) {
-        double nuevaVida = objetivo.getPuntosDeVida() - PUNTOS_DE_DANIO;
+        double vidaPrevia = objetivo.getPuntosDeVida();
+        double nuevaVida = vidaPrevia - PUNTOS_DE_DANIO;
+
         if (nuevaVida < 0.0) {
             nuevaVida = 0.0;
+            return;
         }
+
         objetivo.setPuntosDeVida(nuevaVida);
+        System.out.println("Estado " + this.toString() + ": " + objetivo.getNombre()
+            + " sufrió " + (vidaPrevia - nuevaVida) + " de daño (vida: " + nuevaVida + ").");
     }
 
     @Override

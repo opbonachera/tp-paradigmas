@@ -14,11 +14,18 @@ public class EstadoRegeneracion extends Estado {
 
     @Override
     public void aplicarAlFinalDelTurno(Personaje objetivo) {
-        double nuevaVida = objetivo.getPuntosDeVida() + PUNTOS_A_CURAR;
+        double vidaPrevia = objetivo.getPuntosDeVida();
+        double nuevaVida = vidaPrevia + PUNTOS_A_CURAR;
+        
+        if(objetivo.getPuntosDeVida() >= objetivo.getMaxPuntosDeVida()) return;
+        
         if (nuevaVida > objetivo.getMaxPuntosDeVida()) {
             nuevaVida = objetivo.getMaxPuntosDeVida();
         }
+        
         objetivo.setPuntosDeVida(nuevaVida);
+        System.out.println("Estado " + this.toString() + ": " + objetivo.getNombre()
+            + " recuperó " + (nuevaVida - vidaPrevia) + " de vida (vida: " + nuevaVida + ").");
     }
     
     @Override
