@@ -39,7 +39,7 @@ public class FabricaDePersonajes {
 	        case 0: return new Estudiante(nombresGenericosMagos[nombreAleatorio]); // estudiante
 	        case 1: return new Profesor(nombresGenericosMagos[nombreAleatorio]); // profesor
 	        case 2: return new Auror(nombresGenericosMagos[nombreAleatorio]); // auror
-	        default: throw new IllegalStateException("No se pudo crear el Mago!!!"); /
+	        default: throw new IllegalStateException("No se pudo crear el Mago!!!"); 
 	    }
 	}
 	
