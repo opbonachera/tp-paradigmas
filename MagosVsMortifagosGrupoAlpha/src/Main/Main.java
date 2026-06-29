@@ -2,6 +2,7 @@ package Main;
 
 import java.util.Random;
 
+import Batalla.Batallon;
 import Personajes.*;
 
 public class Main {
@@ -23,14 +24,19 @@ public class Main {
 			
 			if(rand.nextBoolean())
 			{
-//				BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS
-//				SI EL BATALLON DE MORTIFAGOS TIENE PERSONAJES VIVOS --->
-//					BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
-			} else
-			{
-//				BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
-//				SI EL BATALLON DE MAGOS TIENE PERSONAJES VIVOS --->
-//					BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS				
+				batallonDeMagos.atacar(batallonDeMortifagos);//	BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS
+				if(batallonDeMortifagos.hayPersonajesVivos()){//SI EL BATALLON DE MORTIFAGOS TIENE PERSONAJES VIVOS --->
+					batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
+				}
+			} 
+			else{
+				batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
+				if(batallonDeMagos.hayPersonajesVivos()) { //SI EL BATALLON DE MAGOS TIENE PERSONAJES VIVOS --->
+					batallonDeMagos.atacar(batallonDeMortifagos); //BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS	
+				}
+
+
+			
 			}
 			
 		}
