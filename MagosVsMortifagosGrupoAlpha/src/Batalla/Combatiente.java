@@ -1,8 +1,8 @@
 package Batalla;
 
 public interface Combatiente {
-	
-    void atacar(Batallon enemigo);
+
+    void atacar(Combatiente enemigo);
 
     boolean hayPersonajesVivos();
 
