@@ -17,7 +17,7 @@ public abstract class Personaje implements Combatiente {
 	protected double puntosDeVida;
 	private final double maxPuntosDeVida;
 	private final Set<Estado> estados;
-	protected List<Hechizo> hechizos;
+	protected Set<Hechizo> hechizos;
 	protected double escudoPuntosDeVida;
 	protected boolean escudoActivo;
 	private FabricaDeHechizos fabricaHechizos = new FabricaDeHechizos();
@@ -30,7 +30,7 @@ public abstract class Personaje implements Combatiente {
 		this.nivelDeMagiaDefensiva = nivelDeMagiaDefensiva;
 		this.puntosDeVida = puntosDeVida;
 		this.maxPuntosDeVida = puntosDeVida;
-		this.hechizos = new ArrayList<>();
+		this.hechizos = new LinkedHashSet<>();
 		this.estados = new LinkedHashSet<>();
 		this.escudoActivo = false;
 		this.escudoPuntosDeVida = 0.0;
@@ -66,7 +66,7 @@ public abstract class Personaje implements Combatiente {
 		return this.puntosDeVida;
 	}
 	
-	public List<Hechizo> getHechizos()
+	public Set<Hechizo> getHechizos()
 	{
 		return this.hechizos;
 	}
