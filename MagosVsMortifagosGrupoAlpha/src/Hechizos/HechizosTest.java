@@ -33,7 +33,7 @@ class HechizosTest {
 		gandalf.agregarHechizo(expecto);
 		gandalf.lanzarHechizo(expecto, harry);
 
-		assertEquals(10, harry.getPuntosDeVida());
+		assertEquals(60, harry.getPuntosDeVida());
 
 		harry.setPuntosDeVida(7.0);
 		harry.procesarEstadosFinDelTurno();
@@ -49,10 +49,10 @@ class HechizosTest {
 		gandalf.agregarHechizo(expelliarmus);
 		gandalf.lanzarHechizo(expelliarmus, snape);
 
-		assertEquals(25, snape.getPuntosDeVida());
+		assertEquals(72.5, snape.getPuntosDeVida());
 
 		snape.procesarEstadosInicioDelTurno();
-		assertEquals(24.5, snape.getPuntosDeVida());
+		assertEquals(72, snape.getPuntosDeVida());
 	}
 	
 	@Test
@@ -73,6 +73,6 @@ class HechizosTest {
 
 		assertFalse(snape.getEscudo());
 		assertEquals(0, snape.getEscudoPuntosDeVida());
-		assertEquals(35, snape.getPuntosDeVida());
+		assertEquals(82.5, snape.getPuntosDeVida());
 	}
 }
