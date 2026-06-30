@@ -202,6 +202,23 @@ public abstract class Personaje implements Combatiente {
        		   nivelDeMagiaDefensiva                   +
        		   Formateo.RESET;
    	}
+    
+    public String mostrarVidaYEscudo() {
+       	return Formateo.ROJO_NEGRITA                   +
+       		   nombre                                  +
+       		   Formateo.RESET                          +
+       		   Formateo.AMARILLO_NEGRITA               +
+       		   " [" + getClass() + "] --->"            +
+       		   Formateo.RESET                          +
+       		   " P.V.: "                               +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   puntosDeVida                            +
+       		   Formateo.RESET                          +
+       		   " - ESC.: "                             +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   escudoPuntosDeVida                      +
+       		   Formateo.RESET;
+   	}
 
     @Override
     public void atacar(Combatiente enemigo) {

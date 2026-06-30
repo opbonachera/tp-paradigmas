@@ -50,8 +50,6 @@ public class EstadoSangrando extends Estado {
 		                   Formateo.GRIS_CLARITO_CURSIVA          +
 		                   ")."                                   +
 		                   Formateo.RESET);
-        System.out.println("Estado " + this.toString() + ": " + objetivo.getNombre()
-            + " sufrió " + (vidaPrevia - nuevaVida) + " de daño (vida: " + nuevaVida + ").");
     }
 
     @Override

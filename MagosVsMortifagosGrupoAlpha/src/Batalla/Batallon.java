@@ -118,5 +118,13 @@ public class Batallon implements Combatiente{
 			System.out.println(p.toString());
 		}
 	}
+	
+	public void mostrarVidaYEscudoBatallon() 
+	{
+		for(Personaje p : personajes)
+		{
+			System.out.println(p.mostrarVidaYEscudo());
+		}
+	}
 
 }

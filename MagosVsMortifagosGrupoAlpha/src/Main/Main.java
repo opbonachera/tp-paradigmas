@@ -36,19 +36,27 @@ public class Main {
 			
 			if(rand.nextBoolean())
 			{
+				System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Magos ataquen..." + Formateo.RESET);
 				batallonDeMagos.atacar(batallonDeMortifagos);//	BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS
 				if(batallonDeMortifagos.hayPersonajesVivos()){//SI EL BATALLON DE MORTIFAGOS TIENE PERSONAJES VIVOS --->
+					System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Mortifagos ataquen..." + Formateo.RESET);
 					batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
 				}
 			} 
 			else{
+				System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Mortifagos ataquen..." + Formateo.RESET);
 				batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
 				if(batallonDeMagos.hayPersonajesVivos()) { //SI EL BATALLON DE MAGOS TIENE PERSONAJES VIVOS --->
+					System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Magos ataquen..." + Formateo.RESET);
 					batallonDeMagos.atacar(batallonDeMortifagos); //BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS	
 				}
 			}
 			
-			System.out.println("--------------------------------------------------");
+			System.out.println(Formateo.AZUL_OSCURO_NEGRITA + "\nRonda Terminada!!! Es hora de ver las estadísticas..." + Formateo.RESET);
+			System.out.println(Formateo.VIOLETA_NEGRITA + "Batallon de Magos: " + Formateo.RESET);
+			batallonDeMagos.mostrarVidaYEscudoBatallon();
+			System.out.println(Formateo.VIOLETA_NEGRITA + "Batallon de Mortifagos: " + Formateo.RESET);
+			batallonDeMortifagos.mostrarVidaYEscudoBatallon();
 			
 		}
 		
