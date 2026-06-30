@@ -1,5 +1,6 @@
 package Main;
 
+import FormatoDeTexto.Formateo;
 import java.util.Random;
 
 import Batalla.Batallon;
@@ -19,25 +20,43 @@ public class Main {
 			batallonDeMagos.agregarPersonaje(fabrica.crearMago());
 			batallonDeMortifagos.agregarPersonaje(fabrica.crearMortifago());
 		}
+		
+		System.out.println(Formateo.VIOLETA_NEGRITA + "Batallon de Magos creado correctamente!!!");
+		System.out.println("Sus integrantes son:" + Formateo.RESET);
+		batallonDeMagos.mostrarBatallon();
+		
+		System.out.println(Formateo.VIOLETA_NEGRITA + "\nBatallon de Mortifagos creado correctamente!!!");
+		System.out.println("Sus integrantes son:" + Formateo.RESET);
+		batallonDeMortifagos.mostrarBatallon();
+		
+		System.out.println(Formateo.AMARILLO_NEGRITA + "\nINICIA LA BATALLA!!!\n" + Formateo.RESET);
 
 		while(batallonDeMagos.hayPersonajesVivos() && batallonDeMortifagos.hayPersonajesVivos())
 		{
 			
 			if(rand.nextBoolean())
 			{
+				System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Magos ataquen..." + Formateo.RESET);
 				batallonDeMagos.atacar(batallonDeMortifagos);//	BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS
 				if(batallonDeMortifagos.hayPersonajesVivos()){//SI EL BATALLON DE MORTIFAGOS TIENE PERSONAJES VIVOS --->
+					System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Mortifagos ataquen..." + Formateo.RESET);
 					batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
 				}
 			} 
 			else{
+				System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Mortifagos ataquen..." + Formateo.RESET);
 				batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
 				if(batallonDeMagos.hayPersonajesVivos()) { //SI EL BATALLON DE MAGOS TIENE PERSONAJES VIVOS --->
+					System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Magos ataquen..." + Formateo.RESET);
 					batallonDeMagos.atacar(batallonDeMortifagos); //BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS	
 				}
 			}
 			
-			System.out.println("--------------------------------------------------");
+			System.out.println(Formateo.AZUL_OSCURO_NEGRITA + "\nRonda Terminada!!! Es hora de ver las estadísticas..." + Formateo.RESET);
+			System.out.println(Formateo.VIOLETA_NEGRITA + "Batallon de Magos: " + Formateo.RESET);
+			batallonDeMagos.mostrarVidaYEscudoBatallon();
+			System.out.println(Formateo.VIOLETA_NEGRITA + "Batallon de Mortifagos: " + Formateo.RESET);
+			batallonDeMortifagos.mostrarVidaYEscudoBatallon();
 			
 		}
 		

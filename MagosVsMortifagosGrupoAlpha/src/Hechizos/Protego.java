@@ -1,5 +1,6 @@
 package Hechizos;
 
+import FormatoDeTexto.Formateo;
 import Estados.EstadoInmune;
 import Personajes.Personaje;
 
@@ -13,9 +14,13 @@ public class Protego extends Hechizo {
 		objetivo.setEscudo(true);
 		objetivo.setEscudoPuntosDeVida(PUNTOS_DE_VIDA_ESCUDO); // Yo haría objetivo.getEscudoPuntosDeVida + PUNTOS_DE_VIDA_ESCUDO.
 		
-		System.out.println(lanzador.getNombre() + 
-				           " alzó su varita y exclamó ¡Protego! El escudo está activo sobre "
-						   + objetivo.getNombre());
+		System.out.println(Formateo.ROJO_NEGRITA                                               + 
+			               lanzador.getNombre()                                                + 
+			               Formateo.RESET                                                      +
+		                   " alzó su varita y exclamó ¡Protego! El escudo está activo sobre "  +
+			               Formateo.ROJO_NEGRITA                                               +
+			               objetivo.getNombre()                                                +
+			               Formateo.RESET);
 		
 		objetivo.agregarEstado(new EstadoInmune(TURNOS_INMUNE));
 	}

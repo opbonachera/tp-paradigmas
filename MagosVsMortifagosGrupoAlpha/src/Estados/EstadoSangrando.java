@@ -1,5 +1,6 @@
 package Estados;
 
+import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public class EstadoSangrando extends Estado {
@@ -20,8 +21,35 @@ public class EstadoSangrando extends Estado {
         }
 
         objetivo.setPuntosDeVida(nuevaVida);
-        System.out.println("Estado " + this.toString() + ": " + objetivo.getNombre()
-            + " sufrió " + (vidaPrevia - nuevaVida) + " de daño (vida: " + nuevaVida + ").");
+        
+        System.out.println(Formateo.GRIS_CLARITO_CURSIVA          +
+		                   "\t  --->  "                           +
+		                   "Estado " 						      + 
+		                   Formateo.RESET                   	  +
+		                   Formateo.AMARILLO_CURSIVA          	  +
+		                   this.toString()                        +
+		                   Formateo.RESET                     	  +
+		                   Formateo.GRIS_CLARITO_CURSIVA          +
+		                   ": "                                   + 
+		                   Formateo.RESET                   	  +
+		                   Formateo.CURSIVA                   	  +
+		                   objetivo.getNombre()                   +
+		                   Formateo.RESET                   	  +
+		                   Formateo.GRIS_CLARITO_CURSIVA          +
+		                   " surió "                              +
+		                   Formateo.RESET                         +
+		                   Formateo.ROJO_CURSIVA             	  +
+		                   (vidaPrevia - nuevaVida)               +
+		                   Formateo.RESET                         +
+		                   Formateo.GRIS_CLARITO_CURSIVA          +
+		                   " ptos de daño (vida: "                +
+		                   Formateo.RESET                         +
+		                   Formateo.VERDE_CURSIVA           	  +
+		                   nuevaVida                              +
+		                   Formateo.RESET                         +
+		                   Formateo.GRIS_CLARITO_CURSIVA          +
+		                   ")."                                   +
+		                   Formateo.RESET);
     }
 
     @Override

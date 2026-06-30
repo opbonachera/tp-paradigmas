@@ -1,5 +1,6 @@
 package Personajes;
 
+
 public class Estudiante extends Mago {
 	
 	private static final double PUNTOS_DE_VIDA_MAXIMOS = 10.0;
@@ -11,5 +12,5 @@ public class Estudiante extends Mago {
 		super(nombre, PUNTOS_DE_VIDA_MAXIMOS, NIVEL_DE_MAGIA_OSCURA,
 				NIVEL_DE_MAGIA_PATRONUS, NIVEL_DE_MAGIA_DEFENSIVA);
 	}
-
+	
 }

@@ -1,5 +1,6 @@
 package Hechizos;
 
+import FormatoDeTexto.Formateo;
 import Estados.EstadoSangrando;
 import Personajes.Personaje;
 
@@ -35,11 +36,17 @@ public class Expelliarmus extends Hechizo {
 			}
 		}
 		
-		System.out.println(lanzador.getNombre()                           +
-				           " lanzó un hechizo de tipo Expelliarmus a "    +
+		System.out.println(Formateo.ROJO_NEGRITA                          +
+		                   lanzador.getNombre()                           +
+		                   Formateo.RESET                                 +
+		                   " lanzó un hechizo de tipo Expelliarmus a "    +
+		                   Formateo.ROJO_NEGRITA                          +
                            objetivo.getNombre()                           + 
-                           " causando "                                   + 
+                           Formateo.RESET                                 +
+                           " causando "                                   +
+                           Formateo.AZUL_NEGRITA                          +
                            daño                                           + 
+                           Formateo.RESET                                 +
                            " puntos de daño.");
 
 		objetivo.agregarEstado(new EstadoSangrando(TURNOS_SANGRANDO));

@@ -1,5 +1,6 @@
 package Personajes;
 
+
 public class Profesor extends Mago {
 	
 	private static final double PUNTOS_DE_VIDA_MAXIMOS = 30.0;

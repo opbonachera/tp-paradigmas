@@ -1,5 +1,6 @@
 package Personajes;
 
+import FormatoDeTexto.Formateo;
 import Batalla.Combatiente;
 import Estados.Estado;
 import Hechizos.*;
@@ -104,8 +105,17 @@ public abstract class Personaje implements Combatiente {
 	public void agregarEstado(Estado estado)
 	{
 		this.estados.add(estado);
-		System.out.println("El personaje " + this.getNombre() +
-							" ha quedado en estado " + estado.toString());
+		System.out.println(Formateo.GRIS_CLARITO_CURSIVA          +
+				           "\t  --->  "                           +
+				           "El personaje " 						  + 
+				           Formateo.RESET                   	  +
+				           Formateo.CURSIVA                   	  +
+				           this.getNombre()                       +
+				           Formateo.RESET                   	  +
+				           Formateo.GRIS_CLARITO_CURSIVA          +
+						   " ha quedado en estado "               + 
+				           estado.toString()                      +
+				           Formateo.RESET);
 	}
 
 	public boolean estaInmune()
@@ -161,6 +171,54 @@ public abstract class Personaje implements Combatiente {
     public boolean hayPersonajesVivos() {
         return estaVivo();
     }
+    
+    @Override
+   	public String toString() {
+       	return Formateo.ROJO_NEGRITA                   +
+       		   nombre                                  +
+       		   Formateo.RESET                          +
+       		   Formateo.AMARILLO_NEGRITA               +
+       		   " [" + getClass() + "] --->"            +
+       		   Formateo.RESET                          +
+       		   " P.V.: "                               +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   puntosDeVida                            +
+       		   Formateo.RESET                          +
+       		   " - ESC.: "                             +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   escudoPuntosDeVida                      +
+       		   Formateo.RESET                          +
+       		   "  ||  "                                +
+       		   "NIV. M. OSC.: "                        +
+       		   Formateo.AZUL_NEGRITA                   +
+       		   nivelDeMagiaOcura                       +
+       		   Formateo.RESET                          +
+       		   " - NIV. M. PAT.: "                     +
+       		   Formateo.AZUL_NEGRITA                   +
+       		   nivelDeMagiaPatronus                    +
+       		   Formateo.RESET                          +
+       		   " - NIV. M. DEF.: "                     +
+       		   Formateo.AZUL_NEGRITA                   +
+       		   nivelDeMagiaDefensiva                   +
+       		   Formateo.RESET;
+   	}
+    
+    public String mostrarVidaYEscudo() {
+       	return Formateo.ROJO_NEGRITA                   +
+       		   nombre                                  +
+       		   Formateo.RESET                          +
+       		   Formateo.AMARILLO_NEGRITA               +
+       		   " [" + getClass() + "] --->"            +
+       		   Formateo.RESET                          +
+       		   " P.V.: "                               +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   puntosDeVida                            +
+       		   Formateo.RESET                          +
+       		   " - ESC.: "                             +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   escudoPuntosDeVida                      +
+       		   Formateo.RESET;
+   	}
 
     public void vaciarHechizos() {
     	hechizos.clear();
