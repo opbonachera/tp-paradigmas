@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import Hechizos.*;
+import Estados.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +67,71 @@ class PersonajesTest {
 		assertFalse(snape.estaVivo());
 		assertTrue(malfoy.estaVivo());
 	}
+	
+	@Test
+	void Test_EstadoSangrando() {
+		Personaje malfoy = new Seguidor("Lucius Malfoy");
+		
+		malfoy.agregarEstado(new EstadoSangrando(2));
+		malfoy.procesarEstadosInicioDelTurno();
+		malfoy.procesarEstadosFinDelTurno();
+		
+		assertEquals(24.5, malfoy.getPuntosDeVida());
+		
+		malfoy.procesarEstadosInicioDelTurno();
+		malfoy.procesarEstadosFinDelTurno();
+		
+		assertEquals(24, malfoy.getPuntosDeVida());
+		
+		malfoy.procesarEstadosInicioDelTurno();
+		malfoy.procesarEstadosFinDelTurno();
+		
+		assertEquals(24, malfoy.getPuntosDeVida());
+	}
+	
+	@Test
+	void Test_EstadoRegeneracion() {
+		Personaje malfoy = new Seguidor("Lucius Malfoy");
+		
+		malfoy.setPuntosDeVida(1);
+		
+		malfoy.agregarEstado(new EstadoRegeneracion(2));
+		malfoy.procesarEstadosInicioDelTurno();
+		malfoy.procesarEstadosFinDelTurno();
+		
+		assertEquals(2, malfoy.getPuntosDeVida());
+		
+		malfoy.procesarEstadosInicioDelTurno();
+		malfoy.procesarEstadosFinDelTurno();
+		
+		assertEquals(3, malfoy.getPuntosDeVida());
+		
+		malfoy.procesarEstadosInicioDelTurno();
+		malfoy.procesarEstadosFinDelTurno();
+		
+		assertEquals(3, malfoy.getPuntosDeVida());
+	}
+	
+	@Test
+	void Test_EstadoInmune() {
+		Personaje gandalf = new Profesor("Gandalf");
+		Personaje snape = new Comandante("Severus Snape");
+		Hechizo avada = new AvadaKedavra();
+		snape.agregarEstado(new EstadoInmune(1));
+		gandalf.lanzarHechizo(avada, snape);
+
+		assertTrue(snape.estaVivo());
+
+		snape.procesarEstadosInicioDelTurno();
+		gandalf.lanzarHechizo(avada, snape);
+		snape.procesarEstadosFinDelTurno();
+		
+		assertTrue(snape.estaVivo());
+
+		
+		gandalf.lanzarHechizo(avada, snape);
+		assertFalse(snape.estaVivo());
+	}
+	
 	
 }

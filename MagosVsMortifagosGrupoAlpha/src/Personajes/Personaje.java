@@ -162,10 +162,12 @@ public abstract class Personaje implements Combatiente {
         return estaVivo();
     }
 
-    @Override
-    public void atacar(Combatiente enemigo) {
-        if (!estaVivo() || !enemigo.hayPersonajesVivos()) return;
-        Hechizo hechizo = hechizos.get(new Random().nextInt(hechizos.size()));
-        lanzarHechizo(hechizo, (Personaje) enemigo);
+    public void vaciarHechizos() {
+    	hechizos.clear();
     }
+    
+    public void agregarHechizo(Hechizo h) {
+    	hechizos.add(h);
+    }
+    
 }

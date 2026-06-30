@@ -21,7 +21,7 @@ public class Protego extends Hechizo {
 	}
 
 	@Override
-	public int esHechizoDeCuracion(){
+	public boolean esHechizoDeCuracion(){
 		return true;
 	}
 }
