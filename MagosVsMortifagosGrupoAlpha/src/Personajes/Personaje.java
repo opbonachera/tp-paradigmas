@@ -105,8 +105,17 @@ public abstract class Personaje implements Combatiente {
 	public void agregarEstado(Estado estado)
 	{
 		this.estados.add(estado);
-		System.out.println("El personaje " + this.getNombre() +
-							" ha quedado en estado " + estado.toString());
+		System.out.println(Formateo.GRIS_CLARITO_CURSIVA          +
+				           "\t  --->  "                           +
+				           "El personaje " 						  + 
+				           Formateo.RESET                   	  +
+				           Formateo.CURSIVA                   	  +
+				           this.getNombre()                       +
+				           Formateo.RESET                   	  +
+				           Formateo.GRIS_CLARITO_CURSIVA          +
+						   " ha quedado en estado "               + 
+				           estado.toString()                      +
+				           Formateo.RESET);
 	}
 
 	public boolean estaInmune()

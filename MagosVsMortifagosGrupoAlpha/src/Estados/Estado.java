@@ -1,5 +1,6 @@
 package Estados;
 
+import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public abstract class Estado {
@@ -25,7 +26,22 @@ public abstract class Estado {
     }
 
     public void alCaducar(Personaje objetivo) {
-        System.out.println("El estado " + this + " de " + objetivo.getNombre() + " caducó.");
+		System.out.println(Formateo.GRIS_CLARITO_CURSIVA          +
+						   "\t  --->  "                           +
+						   "El estado " 						  + 
+						   Formateo.RESET                   	  +
+						   Formateo.AMARILLO_CURSIVA          	  +
+						   this                                   +
+						   Formateo.RESET                     	  +
+						   Formateo.GRIS_CLARITO_CURSIVA          +
+						   " de "                                 + 
+						   Formateo.RESET                   	  +
+						   Formateo.CURSIVA                   	  +
+						   objetivo.getNombre()                   +
+						   Formateo.RESET                   	  +
+						   Formateo.GRIS_CLARITO_CURSIVA          +
+						   " caducó."                             +
+						   Formateo.RESET);
     }
     
     @Override
