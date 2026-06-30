@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		int CANT_PERSONAJES = 2;
-		int CANT_RONDAS_PARA_PREDECIR = 2;
+		int CANT_RONDAS_PARA_PREDECIR = 20;
 		int cantRondasJugadas = 0;
 		FabricaDePersonajes fabrica = new FabricaDePersonajes();
 		Batallon batallonDeMagos = new Batallon();
