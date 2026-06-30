@@ -1,5 +1,6 @@
 package Main;
 
+import FormatoDeTexto.Formateo;
 import java.util.Random;
 
 import Batalla.Batallon;
@@ -19,6 +20,16 @@ public class Main {
 			batallonDeMagos.agregarPersonaje(fabrica.crearMago());
 			batallonDeMortifagos.agregarPersonaje(fabrica.crearMortifago());
 		}
+		
+		System.out.println(Formateo.VIOLETA_NEGRITA + "Batallon de Magos creado correctamente!!!");
+		System.out.println("Sus integrantes son:" + Formateo.RESET);
+		batallonDeMagos.mostrarBatallon();
+		
+		System.out.println(Formateo.VIOLETA_NEGRITA + "\nBatallon de Mortifagos creado correctamente!!!");
+		System.out.println("Sus integrantes son:" + Formateo.RESET);
+		batallonDeMortifagos.mostrarBatallon();
+		
+		System.out.println(Formateo.AMARILLO_NEGRITA + "\nINICIA LA BATALLA!!!\n" + Formateo.RESET);
 
 		while(batallonDeMagos.hayPersonajesVivos() && batallonDeMortifagos.hayPersonajesVivos())
 		{

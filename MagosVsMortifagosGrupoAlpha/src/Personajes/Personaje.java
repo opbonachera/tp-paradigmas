@@ -1,5 +1,6 @@
 package Personajes;
 
+import FormatoDeTexto.Formateo;
 import Batalla.Combatiente;
 import Estados.Estado;
 import Hechizos.*;
@@ -161,6 +162,37 @@ public abstract class Personaje implements Combatiente {
     public boolean hayPersonajesVivos() {
         return estaVivo();
     }
+    
+    @Override
+   	public String toString() {
+       	return Formateo.ROJO_NEGRITA                   +
+       		   nombre                                  +
+       		   Formateo.RESET                          +
+       		   Formateo.AMARILLO_NEGRITA               +
+       		   " [" + getClass() + "] --->"            +
+       		   Formateo.RESET                          +
+       		   " P.V.: "                               +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   puntosDeVida                            +
+       		   Formateo.RESET                          +
+       		   " - ESC.: "                             +
+       		   Formateo.VERDE_NEGRITA                  +
+       		   escudoPuntosDeVida                      +
+       		   Formateo.RESET                          +
+       		   "  ||  "                                +
+       		   "NIV. M. OSC.: "                        +
+       		   Formateo.AZUL_NEGRITA                   +
+       		   nivelDeMagiaOcura                       +
+       		   Formateo.RESET                          +
+       		   " - NIV. M. PAT.: "                     +
+       		   Formateo.AZUL_NEGRITA                   +
+       		   nivelDeMagiaPatronus                    +
+       		   Formateo.RESET                          +
+       		   " - NIV. M. DEF.: "                     +
+       		   Formateo.AZUL_NEGRITA                   +
+       		   nivelDeMagiaDefensiva                   +
+       		   Formateo.RESET;
+   	}
 
     @Override
     public void atacar(Combatiente enemigo) {

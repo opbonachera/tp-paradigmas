@@ -110,5 +110,13 @@ public class Batallon implements Combatiente{
 
 		this.procesarEstadosFinDelTurno();
 	}
+	
+	public void mostrarBatallon() 
+	{
+		for(Personaje p : personajes)
+		{
+			System.out.println(p.toString());
+		}
+	}
 
 }
