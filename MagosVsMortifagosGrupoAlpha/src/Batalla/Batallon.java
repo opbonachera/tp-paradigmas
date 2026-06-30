@@ -12,7 +12,7 @@ import java.util.Random;
 import Hechizos.Hechizo;
 import Personajes.Personaje;
 
-public class Batallon implements Combatiente{
+public class Batallon{
 	
 	List<Personaje> personajes = new ArrayList<>();
 	List<Hechizo> hechizosEnOrden = new LinkedList<>();
@@ -64,15 +64,14 @@ public class Batallon implements Combatiente{
 		}
 	}
 	
-	public void atacar(Combatiente enemigo) {
-		if (!(enemigo instanceof Batallon enemigoB)) return;
+	public void atacar(Batallon enemigo) {
 
 		Random random = new Random();
 		Personaje objetivo;
 
 		this.procesarEstadosInicioDelTurno();
 
-		List<Personaje> vivosEnemigos = enemigoB.personajes.stream()
+		List<Personaje> vivosEnemigos = enemigo.personajes.stream()
 			.filter(Personaje::estaVivo).toList();
 
 		List<Personaje> vivosAliados = this.personajes.stream()

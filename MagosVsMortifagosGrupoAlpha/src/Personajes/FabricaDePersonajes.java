@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class FabricaDePersonajes {
+	
     private static final String[] nombresGenericosMagos = {
             "Albus Shacklebolt", "Garrick Ollivander", "Minerva Flitwick", 
             "Remus Diggory", "Sybill Vector", "Pomona Sprout", 
@@ -19,10 +20,11 @@ public class FabricaDePersonajes {
     private final Set<Personaje> personajesCreados = new HashSet<>();
     private final Random random = new Random();
 
-    public Personaje crearMago() {
-        int intentos = 0;
-
-        while (intentos < nombresGenericosMagos.length) {
+    public Personaje crearMago() 
+    {
+    	int cantMagosCreados = 0;
+    	
+    	while (cantMagosCreados < nombresGenericosMagos.length) {
             int nombreAleatorio = random.nextInt(nombresGenericosMagos.length);
             int tipoAleatorio = random.nextInt(3); 
             
@@ -45,16 +47,16 @@ public class FabricaDePersonajes {
                 return nuevoMago;
             }
 
-            intentos++;
+            cantMagosCreados++;
         }
 
         throw new IllegalStateException("¡No se pueden crear más Magos únicos! Todos los nombres disponibles ya están en uso.");
     }
     
     public Personaje crearMortifago() {
-        int intentos = 0;
-
-        while (intentos < nombresGenericosMortifagos.length) {
+    	int cantMortifagosCreados = 0;
+    	
+    	while (cantMortifagosCreados < nombresGenericosMortifagos.length) {
             int nombreAleatorio = random.nextInt(nombresGenericosMortifagos.length);
             int tipoAleatorio = random.nextInt(2); 
             
@@ -74,7 +76,7 @@ public class FabricaDePersonajes {
                 return nuevoMortifago;
             }
 
-            intentos++;
+            cantMortifagosCreados++;
         }
 
         throw new IllegalStateException("¡No se pueden crear más Mortifagos únicos! Todos los nombres disponibles ya están en uso.");

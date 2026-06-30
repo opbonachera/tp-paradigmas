@@ -1,9 +1,14 @@
-package Hechizos;
+package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import Hechizos.AvadaKedavra;
+import Hechizos.ExpectoPatronum;
+import Hechizos.Expelliarmus;
+import Hechizos.Hechizo;
+import Hechizos.Protego;
 import Personajes.Comandante;
 import Personajes.Personaje;
 import Personajes.Profesor;

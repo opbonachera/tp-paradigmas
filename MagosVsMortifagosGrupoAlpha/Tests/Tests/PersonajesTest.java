@@ -1,9 +1,15 @@
-package Personajes;
+package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import Hechizos.*;
+import Personajes.Auror;
+import Personajes.Comandante;
+import Personajes.Estudiante;
+import Personajes.Personaje;
+import Personajes.Profesor;
+import Personajes.Seguidor;
 import Estados.*;
 
 class PersonajesTest {

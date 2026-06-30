@@ -1,14 +1,13 @@
 package Personajes;
 
 import FormatoDeTexto.Formateo;
-import Batalla.Combatiente;
 import Estados.Estado;
 import Hechizos.*;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public abstract class Personaje implements Combatiente {
+public abstract class Personaje {
 	protected String nombre;
 	protected int nivelDeMagiaOcura;
 	protected int nivelDeMagiaPatronus;
@@ -163,11 +162,6 @@ public abstract class Personaje implements Combatiente {
 	
 	public void lanzarHechizo(Hechizo hechizo, Personaje objetivo) {
         hechizo.ejecutar(this, objetivo);
-    }
-
-    @Override
-    public boolean hayPersonajesVivos() {
-        return estaVivo();
     }
     
     @Override

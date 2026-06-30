@@ -1,9 +1,10 @@
-package Batalla;
+package Tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import Batalla.Batallon;
 import Hechizos.*;
 import Personajes.*;
 
