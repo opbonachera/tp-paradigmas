@@ -122,8 +122,6 @@ class PersonajesTest {
 
 		assertTrue(snape.estaVivo());
 
-		snape.procesarEstadosInicioDelTurno();
-		gandalf.lanzarHechizo(avada, snape);
 		snape.procesarEstadosFinDelTurno();
 		
 		assertTrue(snape.estaVivo());

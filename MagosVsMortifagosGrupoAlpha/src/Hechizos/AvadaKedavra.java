@@ -9,16 +9,29 @@ public class AvadaKedavra extends Hechizo {
 	@Override
 	public void ejecutar(Personaje lanzador, Personaje objetivo)
 	{
-		objetivo.setPuntosDeVida(SIN_VIDA);
-		
-		System.out.println("¡Un destello de luz verde! "                  + 
-		                   Formateo.ROJO_NEGRITA                          +
-		                   lanzador.getNombre()                           +
-		                   Formateo.RESET                                 +
-		                   " usó la maldición asesina sobre "             + 
-		                   Formateo.ROJO_NEGRITA                          +
-		                   objetivo.getNombre()                           + 
-		                   Formateo.RESET                                 +
-						   ".");
+		if(objetivo.estaInmune()) {
+			System.out.println("¡Un destello de luz verde! "                  + 
+	                   Formateo.ROJO_NEGRITA                          +
+	                   lanzador.getNombre()                           +
+	                   Formateo.RESET                                 +
+	                   " usó la maldición asesina sobre "             + 
+	                   Formateo.ROJO_NEGRITA                          +
+	                   objetivo.getNombre()                           + 
+	                   Formateo.RESET                                 +
+					   " pero fallo ya que tenia inmunidad!");
+		}else {
+			objetivo.setPuntosDeVida(SIN_VIDA);
+			System.out.println("¡Un destello de luz verde! "                  + 
+	                   Formateo.ROJO_NEGRITA                          +
+	                   lanzador.getNombre()                           +
+	                   Formateo.RESET                                 +
+	                   " usó la maldición asesina sobre "             + 
+	                   Formateo.ROJO_NEGRITA                          +
+	                   objetivo.getNombre()                           + 
+	                   Formateo.RESET                                 +
+					   ".");
+
+		}
+
 	}
 }
