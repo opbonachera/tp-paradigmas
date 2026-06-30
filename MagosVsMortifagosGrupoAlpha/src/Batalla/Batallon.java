@@ -2,9 +2,12 @@ package Batalla;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import java.util.Random;
 import Hechizos.Hechizo;
 import Personajes.Personaje;
@@ -63,34 +66,49 @@ public class Batallon implements Combatiente{
 	
 	@Override
 	public void atacar(Combatiente enemigo) {
-	    if (!(enemigo instanceof Batallon enemigoB)) return;
+		if (!(enemigo instanceof Batallon enemigoB)) return;
 
-	    Random random = new Random();
-	    this.procesarEstadosInicioDelTurno();
+		Random random = new Random();
+		Personaje objetivo;
 
-	    List<Personaje> vivosEnemigos = enemigoB.personajes.stream()
-	        .filter(Personaje::estaVivo).toList();
+		this.procesarEstadosInicioDelTurno();
 
-	    for (Personaje p : this.personajes) {
-	        if (!p.estaVivo()) continue;
-	        if (vivosEnemigos.isEmpty()) break;
+		List<Personaje> vivosEnemigos = enemigoB.personajes.stream()
+			.filter(Personaje::estaVivo).toList();
 
-	        List<Hechizo> hechizos = p.getHechizos();
-	       
-	        Hechizo hechizoElegido = hechizos.stream()
-	            .filter(h -> !hechizosEnOrden.contains(h))
-	            .findFirst()
-	            .orElse(hechizos.get(random.nextInt(hechizos.size())));
+		List<Personaje> vivosAliados = this.personajes.stream()
+			.filter(Personaje::estaVivo).toList();
 
-	        Personaje objetivo = vivosEnemigos.get(random.nextInt(vivosEnemigos.size()));
+		// Set para bloquear hechizos ya usados en este turno
+		Set<Hechizo> hechizosUsadosEnEsteTurno = new HashSet<>();
 
-	        p.lanzarHechizo(hechizoElegido, objetivo);
-	        hechizosEnOrden.add(hechizoElegido);
-	        movimientosPartida.put(p, hechizoElegido);
-	    }
+		for (Personaje p : this.personajes) {
+			if (!p.estaVivo()) continue;
+			if (vivosEnemigos.isEmpty()) break;
 
-	    hechizosEnOrden.clear();
-	    this.procesarEstadosFinDelTurno();
+			Set<Hechizo> hechizosDelPersonaje = p.getHechizos();
+			Optional<Hechizo> posibleHechizo = hechizosDelPersonaje.stream()
+				    .filter(h -> !hechizosUsadosEnEsteTurno.contains(h))
+				    .findFirst();
+
+			if (posibleHechizo.isEmpty()) {
+			    System.out.println(p.getNombre() + " no tiene hechizos disponibles este turno.");
+			    continue; 
+			}
+
+			Hechizo hechizoElegido = posibleHechizo.get();
+
+			if(hechizoElegido.esHechizoDeCuracion()){
+				objetivo = vivosAliados.get(random.nextInt(vivosAliados.size()));
+			}else{
+				objetivo = vivosEnemigos.get(random.nextInt(vivosEnemigos.size()));
+			}
+			
+			p.lanzarHechizo(hechizoElegido, objetivo);
+			movimientosPartida.put(p, hechizoElegido);
+		}
+
+		this.procesarEstadosFinDelTurno();
 	}
 
 }

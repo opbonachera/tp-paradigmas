@@ -8,12 +8,13 @@ import Personajes.*;
 public class Main {
 
 	public static void main(String[] args) {
+		int CANT_PERSONAJES = 2;
 		FabricaDePersonajes fabrica = new FabricaDePersonajes();
 		Batallon batallonDeMagos = new Batallon();
 		Batallon batallonDeMortifagos = new Batallon();
 		Random rand = new Random();
 		
-		for(int i = 0; i < 5; i++)
+		for(int i = 0; i < CANT_PERSONAJES; i++)
 		{
 			batallonDeMagos.agregarPersonaje(fabrica.crearMago());
 			batallonDeMortifagos.agregarPersonaje(fabrica.crearMortifago());
@@ -34,10 +35,9 @@ public class Main {
 				if(batallonDeMagos.hayPersonajesVivos()) { //SI EL BATALLON DE MAGOS TIENE PERSONAJES VIVOS --->
 					batallonDeMagos.atacar(batallonDeMortifagos); //BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS	
 				}
-
-
-			
 			}
+			
+			System.out.println("--------------------------------------------------");
 			
 		}
 		
@@ -52,7 +52,7 @@ public class Main {
 		{
 			System.out.println("--------------------------------------------------");
 			System.out.println("|                                                |");
-			System.out.println("|     ¡Los mortifagps han ganado la batalla!     |");
+			System.out.println("|     ¡Los mortifagos han ganado la batalla!     |");
 			System.out.println("|                                                |");
 			System.out.println("--------------------------------------------------");
 		}
