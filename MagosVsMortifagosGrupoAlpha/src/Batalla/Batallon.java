@@ -16,12 +16,9 @@ public class Batallon{
 	
 	List<Personaje> personajes = new ArrayList<>();
 	List<Hechizo> hechizosEnOrden = new LinkedList<>();
-	Map<Personaje, Hechizo> movimientosPartida = new HashMap<>(); //CAMBIAR
-//	Set<String> XXXXX = HashSet<String>(); //CAMBIAR
+	Map<Personaje, Hechizo> movimientosPartida = new HashMap<>();
 	
-	// FALTAN TODAS LAS IMPLEMENTACIONES DE LIST (CREO QUE NO LO IBAMOS A USAR), MAP Y SET
-	
-	public boolean agregarPersonaje(Personaje p) // hay que pasarlo a boolean?
+	public boolean agregarPersonaje(Personaje p)
 	{
 		return personajes.add(p);
 	}
