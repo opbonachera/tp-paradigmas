@@ -2,7 +2,7 @@ package Hechizos;
 
 import Personajes.Personaje;
 
-public class AvadaKedavra implements Hechizo {
+public class AvadaKedavra extends Hechizo {
 	private static final double SIN_VIDA = 0.0;
 	
 	@Override

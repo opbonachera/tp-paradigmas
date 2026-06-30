@@ -3,7 +3,7 @@ package Hechizos;
 import Estados.EstadoSangrando;
 import Personajes.Personaje;
 
-public class Expelliarmus implements Hechizo {
+public class Expelliarmus extends Hechizo {
 	private static final double MULTIPLICADOR_DE_DAÑO = 3.5;
 	private static final int TURNOS_SANGRANDO = 2;
 	
@@ -45,4 +45,6 @@ public class Expelliarmus implements Hechizo {
 		objetivo.agregarEstado(new EstadoSangrando(TURNOS_SANGRANDO));
 		
 	}
+
+	
 }

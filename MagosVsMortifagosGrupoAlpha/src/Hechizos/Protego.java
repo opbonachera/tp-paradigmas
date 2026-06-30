@@ -3,7 +3,7 @@ package Hechizos;
 import Estados.EstadoInmune;
 import Personajes.Personaje;
 
-public class Protego implements Hechizo {
+public class Protego extends Hechizo {
 	private static final double PUNTOS_DE_VIDA_ESCUDO = 10.0;
 	private static final int TURNOS_INMUNE = 1;
 	
@@ -18,5 +18,10 @@ public class Protego implements Hechizo {
 						   + objetivo.getNombre());
 		
 		objetivo.agregarEstado(new EstadoInmune(TURNOS_INMUNE));
+	}
+
+	@Override
+	public int esHechizoDeCuracion(){
+		return true;
 	}
 }

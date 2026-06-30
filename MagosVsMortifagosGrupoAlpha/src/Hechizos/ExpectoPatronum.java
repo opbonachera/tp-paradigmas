@@ -3,7 +3,7 @@ package Hechizos;
 import Estados.EstadoRegeneracion;
 import Personajes.Personaje;
 
-public class ExpectoPatronum implements Hechizo {
+public class ExpectoPatronum extends Hechizo {
 	private static final double MULTIPLICADOR_DE_CURACION = 4.5;
 	private static final int TURNOS_REGENERACION = 2;
 	
@@ -30,5 +30,10 @@ public class ExpectoPatronum implements Hechizo {
 				           " Puntos de Vida.");
 		
 		objetivo.agregarEstado(new EstadoRegeneracion(TURNOS_REGENERACION));
+	}
+
+	@Override
+	public int esHechizoDeCuracion(){
+		return true;
 	}
 }
