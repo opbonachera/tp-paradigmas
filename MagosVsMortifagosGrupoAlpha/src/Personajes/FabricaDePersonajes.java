@@ -1,57 +1,82 @@
 package Personajes;
 
 import java.util.Random;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FabricaDePersonajes {
-	private static final String[] nombresGenericosMagos = {
-		    "Albus Shacklebolt", 
-		    "Garrick Ollivander", 
-		    "Minerva Flitwick", 
-		    "Remus Diggory", 
-		    "Sybill Vector", 
-		    "Pomona Sprout", 
-		    "Phineas Black", 
-		    "Celestina Warbeck", 
-		    "Gideon Prewett", 
-		    "Dorcas Meadowes"
-		}; 
-	private static final String[] nombresGenericosMortifagos = {
-		    "Lucius Malfoy", 
-		    "Bellatrix Lestrange", 
-		    "Antonin Dolohov", 
-		    "Corban Yaxley", 
-		    "Thorfinn Rowle", 
-		    "Bartemius Crouch Jr", 
-		    "Regulus Black", 
-		    "Evan Rosier", 
-		    "Walden Macnair", 
-		    "Augustus Rookwood"
-		};
-	Random rand1 = new Random();
-	Random rand2 = new Random();
-	
-	
-	public Personaje crearMago() {
-		int nombreAleatorio = rand1.nextInt(nombresGenericosMagos.length);
-		int tipoAleatorio = rand2.nextInt(3); // no se si hay que hacerlo constante
-		
-		switch (tipoAleatorio) {
-	        case 0: return new Estudiante(nombresGenericosMagos[nombreAleatorio]); // estudiante
-	        case 1: return new Profesor(nombresGenericosMagos[nombreAleatorio]); // profesor
-	        case 2: return new Auror(nombresGenericosMagos[nombreAleatorio]); // auror
-	        default: throw new IllegalStateException("No se pudo crear el Mago!!!"); 
-	    }
-	}
-	
-	public Personaje crearMortifago() {
-		int nombreAleatorio = rand1.nextInt(nombresGenericosMortifagos.length);
-		int tipoAleatorio = rand2.nextInt(2); // no se si hay que hacerlo constante
-		
-		switch (tipoAleatorio) {
-	        case 0: return new Seguidor(nombresGenericosMortifagos[nombreAleatorio]); // seguidor
-	        case 1: return new Comandante(nombresGenericosMortifagos[nombreAleatorio]); // comandante
-	        default: throw new IllegalStateException("No se pudo crear el Mortifago!!!"); // hay que revisar porque no es IllegalArgumentException
-		}
-	}
-	
+    private static final String[] nombresGenericosMagos = {
+            "Albus Shacklebolt", "Garrick Ollivander", "Minerva Flitwick", 
+            "Remus Diggory", "Sybill Vector", "Pomona Sprout", 
+            "Phineas Black", "Celestina Warbeck", "Gideon Prewett", "Dorcas Meadowes"
+    }; 
+    private static final String[] nombresGenericosMortifagos = {
+            "Lucius Malfoy", "Bellatrix Lestrange", "Antonin Dolohov", 
+            "Corban Yaxley", "Thorfinn Rowle", "Bartemius Crouch Jr", 
+            "Regulus Black", "Evan Rosier", "Walden Macnair", "Augustus Rookwood"
+    };
+
+    private final Set<Personaje> personajesCreados = new HashSet<>();
+    private final Random random = new Random();
+
+    public Personaje crearMago() {
+        int intentos = 0;
+
+        while (intentos < nombresGenericosMagos.length) {
+            int nombreAleatorio = random.nextInt(nombresGenericosMagos.length);
+            int tipoAleatorio = random.nextInt(3); 
+            
+            Personaje nuevoMago;
+            switch (tipoAleatorio) {
+                case 0: 
+                    nuevoMago = new Estudiante(nombresGenericosMagos[nombreAleatorio]);
+                    break;
+                case 1: 
+                    nuevoMago = new Profesor(nombresGenericosMagos[nombreAleatorio]);
+                    break;
+                case 2: 
+                    nuevoMago = new Auror(nombresGenericosMagos[nombreAleatorio]);
+                    break;
+                default: 
+                    throw new IllegalStateException("No se pudo crear el Mago!!!"); 
+            }
+
+            if (personajesCreados.add(nuevoMago)) {
+                return nuevoMago;
+            }
+
+            intentos++;
+        }
+
+        throw new IllegalStateException("¡No se pueden crear más Magos únicos! Todos los nombres disponibles ya están en uso.");
+    }
+    
+    public Personaje crearMortifago() {
+        int intentos = 0;
+
+        while (intentos < nombresGenericosMortifagos.length) {
+            int nombreAleatorio = random.nextInt(nombresGenericosMortifagos.length);
+            int tipoAleatorio = random.nextInt(2); 
+            
+            Personaje nuevoMortifago;
+            switch (tipoAleatorio) {
+                case 0: 
+                    nuevoMortifago = new Seguidor(nombresGenericosMortifagos[nombreAleatorio]);
+                    break;
+                case 1: 
+                    nuevoMortifago = new Comandante(nombresGenericosMortifagos[nombreAleatorio]);
+                    break;
+                default: 
+                    throw new IllegalStateException("No se pudo crear el Mortifago!!!"); 
+            }
+
+            if (personajesCreados.add(nuevoMortifago)) {
+                return nuevoMortifago;
+            }
+
+            intentos++;
+        }
+
+        throw new IllegalStateException("¡No se pueden crear más Mortifagos únicos! Todos los nombres disponibles ya están en uso.");
+    }
 }

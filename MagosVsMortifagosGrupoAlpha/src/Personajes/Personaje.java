@@ -4,10 +4,8 @@ import FormatoDeTexto.Formateo;
 import Batalla.Combatiente;
 import Estados.Estado;
 import Hechizos.*;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Random;
+import java.util.Objects;
 import java.util.Set;
 
 public abstract class Personaje implements Combatiente {
@@ -228,4 +226,17 @@ public abstract class Personaje implements Combatiente {
     	hechizos.add(h);
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Personaje)) return false; 
+        
+        Personaje personaje = (Personaje) o;
+        return nombre != null && nombre.equalsIgnoreCase(personaje.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre != null ? nombre.toLowerCase() : null);
+    }
 }

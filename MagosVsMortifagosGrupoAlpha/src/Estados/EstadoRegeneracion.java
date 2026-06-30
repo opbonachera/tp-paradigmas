@@ -22,6 +22,8 @@ public class EstadoRegeneracion extends Estado {
             nuevaVida = objetivo.getMaxPuntosDeVida();
         }
         
+        if(nuevaVida - vidaPrevia == 0.0) return;
+        
         objetivo.setPuntosDeVida(nuevaVida);
         
         System.out.println(Formateo.GRIS_CLARITO_CURSIVA          +
