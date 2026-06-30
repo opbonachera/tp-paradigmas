@@ -1,5 +1,6 @@
 package Hechizos;
 
+import FormatoDeTexto.Formateo;
 import Estados.EstadoRegeneracion;
 import Personajes.Personaje;
 
@@ -22,18 +23,24 @@ public class ExpectoPatronum extends Hechizo {
 
 		
 		
-		System.out.println(lanzador.getNombre()       + 
-				           " conjuró un Patronum. "   + 
-				           objetivo.getNombre()       + 
-				           " recuperó "               + 
-				           curacion                   + 
-				           " Puntos de Vida.");
+		System.out.println(Formateo.ROJO_NEGRITA                          +
+		                   lanzador.getNombre()                           +
+                           Formateo.RESET                                 +
+                           " conjuró un Patronum. "                       +
+                           Formateo.ROJO_NEGRITA                          +
+                           objetivo.getNombre()                           + 
+                           Formateo.RESET                                 +
+                           " recuperó "                                   +
+                           Formateo.AZUL_NEGRITA                          +
+                           curacion                                       + 
+                           Formateo.RESET                                 +
+                           " Puntos de Vida.");
 		
 		objetivo.agregarEstado(new EstadoRegeneracion(TURNOS_REGENERACION));
 	}
 
 	@Override
-	public int esHechizoDeCuracion(){
+	public boolean esHechizoDeCuracion(){
 		return true;
 	}
 }

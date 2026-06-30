@@ -1,5 +1,6 @@
 package Hechizos;
 
+import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public class AvadaKedavra extends Hechizo {
@@ -10,10 +11,14 @@ public class AvadaKedavra extends Hechizo {
 	{
 		objetivo.setPuntosDeVida(SIN_VIDA);
 		
-		System.out.println("¡Un destello de luz verde! "        + 
-		                   lanzador.getNombre()                 +
-                           " usó la maldición asesina sobre "   + 
-		                   objetivo.getNombre()                 + 
-		                   ".");
+		System.out.println("¡Un destello de luz verde! "                  + 
+		                   Formateo.ROJO_NEGRITA                          +
+		                   lanzador.getNombre()                           +
+		                   Formateo.RESET                                 +
+		                   " usó la maldición asesina sobre "             + 
+		                   Formateo.ROJO_NEGRITA                          +
+		                   objetivo.getNombre()                           + 
+		                   Formateo.RESET                                 +
+						   ".");
 	}
 }
