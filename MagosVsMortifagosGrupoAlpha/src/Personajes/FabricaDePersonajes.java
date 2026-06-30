@@ -22,9 +22,9 @@ public class FabricaDePersonajes {
 
     public Personaje crearMago() 
     {
-    	int cantMagosCreados = 0;
+    	int cantIntentosCrearMagos = 0;
     	
-    	while (cantMagosCreados < nombresGenericosMagos.length) {
+    	while (cantIntentosCrearMagos < nombresGenericosMagos.length) {
             int nombreAleatorio = random.nextInt(nombresGenericosMagos.length);
             int tipoAleatorio = random.nextInt(3); 
             
@@ -47,16 +47,16 @@ public class FabricaDePersonajes {
                 return nuevoMago;
             }
 
-            cantMagosCreados++;
+            cantIntentosCrearMagos++;
         }
 
         throw new IllegalStateException("¡No se pueden crear más Magos únicos! Todos los nombres disponibles ya están en uso.");
     }
     
     public Personaje crearMortifago() {
-    	int cantMortifagosCreados = 0;
+    	int cantIntentosCrearMortifagos = 0;
     	
-    	while (cantMortifagosCreados < nombresGenericosMortifagos.length) {
+    	while (cantIntentosCrearMortifagos < nombresGenericosMortifagos.length) {
             int nombreAleatorio = random.nextInt(nombresGenericosMortifagos.length);
             int tipoAleatorio = random.nextInt(2); 
             
@@ -76,7 +76,7 @@ public class FabricaDePersonajes {
                 return nuevoMortifago;
             }
 
-            cantMortifagosCreados++;
+            cantIntentosCrearMortifagos++;
         }
 
         throw new IllegalStateException("¡No se pueden crear más Mortifagos únicos! Todos los nombres disponibles ya están en uso.");
