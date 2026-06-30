@@ -16,4 +16,5 @@ public class Formateo {
     public static final String ROJO_CURSIVA = "\033[3;31m";
     public static final String VERDE_FLUOR = "\033[1;92m";
     public static final String AZUL_OSCURO_NEGRITA = "\033[1;34m";
+    public static final String DORADO_NEGRITA_CURSIVA = "\033[1;3;33m";
 }

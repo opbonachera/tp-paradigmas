@@ -125,5 +125,16 @@ public class Batallon implements Combatiente{
 			System.out.println(p.mostrarVidaYEscudo());
 		}
 	}
+	
+	public double obtenerSumatoriaDeVidaDelBatallon() 
+	{
+		double vidaYEscudoAcumulado = 0.0;
+		for(Personaje p : personajes)
+		{
+			vidaYEscudoAcumulado += p.getEscudoPuntosDeVida();
+			vidaYEscudoAcumulado += p.getPuntosDeVida();
+		}
+		return vidaYEscudoAcumulado;
+	}
 
 }
