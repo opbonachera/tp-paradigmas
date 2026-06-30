@@ -64,7 +64,6 @@ public class Batallon implements Combatiente{
 		}
 	}
 	
-	@Override
 	public void atacar(Combatiente enemigo) {
 		if (!(enemigo instanceof Batallon enemigoB)) return;
 

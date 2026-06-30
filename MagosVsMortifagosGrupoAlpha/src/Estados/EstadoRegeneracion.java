@@ -18,8 +18,6 @@ public class EstadoRegeneracion extends Estado {
         double vidaPrevia = objetivo.getPuntosDeVida();
         double nuevaVida = vidaPrevia + PUNTOS_A_CURAR;
         
-        if(objetivo.getPuntosDeVida() >= objetivo.getMaxPuntosDeVida()) return;
-        
         if (nuevaVida > objetivo.getMaxPuntosDeVida()) {
             nuevaVida = objetivo.getMaxPuntosDeVida();
         }

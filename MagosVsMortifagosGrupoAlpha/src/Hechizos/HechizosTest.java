@@ -16,6 +16,8 @@ class HechizosTest {
 		Personaje gandalf = new Profesor("Gandalf");
 		Personaje snape = new Comandante("Severus Snape");
 		Hechizo avada = new AvadaKedavra();
+		gandalf.vaciarHechizos();
+		gandalf.agregarHechizo(avada);
 		gandalf.lanzarHechizo(avada, snape);
 		
 		assertFalse(snape.estaVivo());
@@ -27,6 +29,8 @@ class HechizosTest {
 		Personaje harry = new Estudiante("Harry Potter");
 		harry.setPuntosDeVida(1.00);
 		Hechizo expecto = new ExpectoPatronum();
+		gandalf.vaciarHechizos();
+		gandalf.agregarHechizo(expecto);
 		gandalf.lanzarHechizo(expecto, harry);
 
 		assertEquals(10, harry.getPuntosDeVida());
@@ -41,25 +45,34 @@ class HechizosTest {
 		Personaje gandalf = new Profesor("Gandalf");
 		Personaje snape = new Comandante("Severus Snape");
 		Hechizo expelliarmus = new Expelliarmus();
+		gandalf.vaciarHechizos();
+		gandalf.agregarHechizo(expelliarmus);
 		gandalf.lanzarHechizo(expelliarmus, snape);
 
-		assertEquals(42.5, snape.getPuntosDeVida());
+		assertEquals(25, snape.getPuntosDeVida());
 
 		snape.procesarEstadosInicioDelTurno();
-		assertEquals(42.0, snape.getPuntosDeVida());
+		assertEquals(24.5, snape.getPuntosDeVida());
 	}
 	
 	@Test
 	void Test_Protego() {
 		Personaje gandalf = new Profesor("Gandalf");
-		Personaje harry = new Estudiante("Harry Potter");
+		Personaje snape = new Comandante("Severius Snape");
 		Hechizo protego = new Protego();
 		Hechizo expelliarmus = new Expelliarmus();
-		gandalf.lanzarHechizo(protego, harry);
-		gandalf.lanzarHechizo(expelliarmus, harry);
+		gandalf.vaciarHechizos();
+		gandalf.agregarHechizo(protego);
+		gandalf.agregarHechizo(expelliarmus);
+		gandalf.lanzarHechizo(protego, snape);
+		
+		assertTrue(snape.getEscudo());
+		assertEquals(10, snape.getEscudoPuntosDeVida());
+		
+		gandalf.lanzarHechizo(expelliarmus, snape);
 
-		assertTrue(harry.getEscudo());
-		assertEquals(10, harry.getEscudoPuntosDeVida());
-		assertEquals(10.0, harry.getPuntosDeVida());
+		assertFalse(snape.getEscudo());
+		assertEquals(0, snape.getEscudoPuntosDeVida());
+		assertEquals(35, snape.getPuntosDeVida());
 	}
 }
