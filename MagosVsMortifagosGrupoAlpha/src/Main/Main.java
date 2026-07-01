@@ -9,7 +9,7 @@ import Personajes.*;
 public class Main {
 
 	public static void main(String[] args) {
-		int CANT_PERSONAJES = 4;                 // Valores que pueden ir entre 1 y 10
+		int CANT_PERSONAJES = 4;                 // Valores que pueden ir entre 1 y 10 (en caso de querer que el numero aumente, se deben cambiar algunas lineas dentro de FabricaDePersonajes.java (como nombresGenericosMagos y nombresGenericosMortifagos)
 		int CANT_RONDAS_PARA_PREDECIR = 10;      // Valores que pueden ir desde 1 en adelante
 		int cantRondasJugadas = 0;
 		FabricaDePersonajes fabrica = new FabricaDePersonajes();
