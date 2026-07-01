@@ -9,8 +9,8 @@ import Personajes.*;
 public class Main {
 
 	public static void main(String[] args) {
-		int CANT_PERSONAJES = 4;
-		int CANT_RONDAS_PARA_PREDECIR = 20;
+		int CANT_PERSONAJES = 6;
+		int CANT_RONDAS_PARA_PREDECIR = 10;
 		int cantRondasJugadas = 0;
 		FabricaDePersonajes fabrica = new FabricaDePersonajes();
 		Batallon batallonDeMagos = new Batallon();
@@ -144,8 +144,6 @@ public class Main {
 			}
 		}
 		
-		
-		
 	}
-
+	
 }
