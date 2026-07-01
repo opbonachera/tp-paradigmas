@@ -4,11 +4,11 @@ import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public class AvadaKedavra extends Hechizo {
+	
 	private static final double SIN_VIDA = 0.0;
 	
 	@Override
-	public void ejecutar(Personaje lanzador, Personaje objetivo)
-	{
+	public void ejecutar(Personaje lanzador, Personaje objetivo) {
 		if(objetivo.estaInmune()) {
 			System.out.println("¡Un destello de luz verde! "                  + 
 	                           Formateo.ROJO_NEGRITA                          +
@@ -19,7 +19,7 @@ public class AvadaKedavra extends Hechizo {
 	                           objetivo.getNombre()                           + 
 	                           Formateo.RESET                                 +
 							   " pero fallo ya que tenia inmunidad!");
-		}else {
+		} else {
 			objetivo.setPuntosDeVida(SIN_VIDA);
 			System.out.println("¡Un destello de luz verde! "                  + 
 	                           Formateo.ROJO_NEGRITA                          +
@@ -30,8 +30,7 @@ public class AvadaKedavra extends Hechizo {
 	                           objetivo.getNombre()                           + 
 	                           Formateo.RESET                                 +
 							   ".");
-
 		}
-
 	}
+	
 }

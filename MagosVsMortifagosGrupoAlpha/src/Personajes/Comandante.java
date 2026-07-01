@@ -9,7 +9,7 @@ public class Comandante extends Mortifago {
 	
 	public Comandante(String nombre) {
 		super(nombre, PUNTOS_DE_VIDA_MAXIMOS, NIVEL_DE_MAGIA_OSCURA,
-				NIVEL_DE_MAGIA_PATRONUS, NIVEL_DE_MAGIA_DEFENSIVA);
+			  NIVEL_DE_MAGIA_PATRONUS, NIVEL_DE_MAGIA_DEFENSIVA);
 	}
 
 }

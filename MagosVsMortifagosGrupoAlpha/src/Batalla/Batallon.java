@@ -18,45 +18,35 @@ public class Batallon{
 	List<Hechizo> hechizosEnOrden = new LinkedList<>();
 	Map<Personaje, Hechizo> movimientosPartida = new HashMap<>();
 	
-	public boolean agregarPersonaje(Personaje p)
-	{
+	public boolean agregarPersonaje(Personaje p) {
 		return personajes.add(p);
 	}
 	
-	public void sacarPersonaje(Personaje p)
-	{
+	public void sacarPersonaje(Personaje p) {
 		personajes.remove(p);
 	}
 	
-	public void eliminarBatallon()
-	{
+	public void eliminarBatallon() {
 		personajes.clear();
 	}
 	
-	public boolean hayPersonajesVivos()
-	{
-		for(Personaje p : personajes)
-		{
-			if(p.estaVivo())
-			{
+	public boolean hayPersonajesVivos() {
+		for(Personaje p : personajes) {	
+			if(p.estaVivo()) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private void procesarEstadosInicioDelTurno()
-	{
-		for(Personaje personaje : this.personajes)
-		{
+	private void procesarEstadosInicioDelTurno() {
+		for(Personaje personaje : this.personajes) {
 			personaje.procesarEstadosInicioDelTurno();
 		}
 	}
 
-	private void procesarEstadosFinDelTurno()
-	{
-		for(Personaje personaje : this.personajes)
-		{
+	private void procesarEstadosFinDelTurno() {
+		for(Personaje personaje : this.personajes) {
 			personaje.procesarEstadosFinDelTurno();
 		}
 	}
@@ -78,6 +68,7 @@ public class Batallon{
 		Set<Hechizo> hechizosUsadosEnEsteTurno = new HashSet<>();
 
 		for (Personaje p : this.personajes) {
+			
 			if (!p.estaVivo()) continue;
 			if (vivosEnemigos.isEmpty()) break;
 
@@ -93,9 +84,9 @@ public class Batallon{
 
 			Hechizo hechizoElegido = posibleHechizo.get();
 
-			if(hechizoElegido.esHechizoDeCuracion()){
+			if(hechizoElegido.esHechizoDeCuracion()) {
 				objetivo = vivosAliados.get(random.nextInt(vivosAliados.size()));
-			}else{
+			} else {
 				objetivo = vivosEnemigos.get(random.nextInt(vivosEnemigos.size()));
 			}
 			
@@ -106,27 +97,21 @@ public class Batallon{
 		this.procesarEstadosFinDelTurno();
 	}
 	
-	public void mostrarBatallon() 
-	{
-		for(Personaje p : personajes)
-		{
+	public void mostrarBatallon() {
+		for(Personaje p : personajes) {
 			System.out.println(p.toString());
 		}
 	}
 	
-	public void mostrarVidaYEscudoBatallon() 
-	{
-		for(Personaje p : personajes)
-		{
+	public void mostrarVidaYEscudoBatallon() {
+		for(Personaje p : personajes) {
 			System.out.println(p.mostrarVidaYEscudo());
 		}
 	}
 	
-	public double obtenerSumatoriaDeVidaDelBatallon() 
-	{
+	public double obtenerSumatoriaDeVidaDelBatallon() {
 		double vidaYEscudoAcumulado = 0.0;
-		for(Personaje p : personajes)
-		{
+		for(Personaje p : personajes) {
 			vidaYEscudoAcumulado += p.getEscudoPuntosDeVida();
 			vidaYEscudoAcumulado += p.getPuntosDeVida();
 		}

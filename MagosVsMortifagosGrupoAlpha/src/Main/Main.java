@@ -9,16 +9,15 @@ import Personajes.*;
 public class Main {
 
 	public static void main(String[] args) {
-		int CANT_PERSONAJES = 6;
-		int CANT_RONDAS_PARA_PREDECIR = 10;
+		int CANT_PERSONAJES = 9;                 // Valores que pueden ir entre 1 y 10
+		int CANT_RONDAS_PARA_PREDECIR = 10;      // Valores que pueden ir desde 1 en adelante
 		int cantRondasJugadas = 0;
 		FabricaDePersonajes fabrica = new FabricaDePersonajes();
 		Batallon batallonDeMagos = new Batallon();
 		Batallon batallonDeMortifagos = new Batallon();
 		Random rand = new Random();
 		
-		for(int i = 0; i < CANT_PERSONAJES; i++)
-		{
+		for(int i = 0; i < CANT_PERSONAJES; i++) {
 			batallonDeMagos.agregarPersonaje(fabrica.crearMago());
 			batallonDeMortifagos.agregarPersonaje(fabrica.crearMortifago());
 		}
@@ -33,26 +32,29 @@ public class Main {
 		
 		System.out.println(Formateo.AMARILLO_NEGRITA + "\nINICIA LA BATALLA!!!\n" + Formateo.RESET);
 
-		while(batallonDeMagos.hayPersonajesVivos() && batallonDeMortifagos.hayPersonajesVivos()
-			  && cantRondasJugadas <= CANT_RONDAS_PARA_PREDECIR)
+		while(batallonDeMagos.hayPersonajesVivos() &&
+			  batallonDeMortifagos.hayPersonajesVivos() &&
+			  cantRondasJugadas <= CANT_RONDAS_PARA_PREDECIR)
 		{
 			
-			if(rand.nextBoolean())
-			{
+			if(rand.nextBoolean()) {
+				
 				System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Magos ataquen..." + Formateo.RESET);
-				batallonDeMagos.atacar(batallonDeMortifagos);//	BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS
-				if(batallonDeMortifagos.hayPersonajesVivos()){//SI EL BATALLON DE MORTIFAGOS TIENE PERSONAJES VIVOS --->
+				batallonDeMagos.atacar(batallonDeMortifagos); // BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS
+				if(batallonDeMortifagos.hayPersonajesVivos()) { // SI EL BATALLON DE MORTIFAGOS TIENE PERSONAJES VIVOS --->
 					System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Mortifagos ataquen..." + Formateo.RESET);
-					batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
+					batallonDeMortifagos.atacar(batallonDeMagos); // BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
 				}
-			} 
-			else{
+				
+			} else {
+				
 				System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Mortifagos ataquen..." + Formateo.RESET);
-				batallonDeMortifagos.atacar(batallonDeMagos);//BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
-				if(batallonDeMagos.hayPersonajesVivos()) { //SI EL BATALLON DE MAGOS TIENE PERSONAJES VIVOS --->
+				batallonDeMortifagos.atacar(batallonDeMagos); // BATALLON DE MORTIFAGOS ATACA A BATALLON DE MAGOS
+				if(batallonDeMagos.hayPersonajesVivos()) { // SI EL BATALLON DE MAGOS TIENE PERSONAJES VIVOS --->
 					System.out.println(Formateo.VERDE_FLUOR + "\nEs hora de que los Magos ataquen..." + Formateo.RESET);
-					batallonDeMagos.atacar(batallonDeMortifagos); //BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS	
+					batallonDeMagos.atacar(batallonDeMortifagos); // BATALLON DE MAGOS ATACA A BATALLON DE MORTIFAGOS	
 				}
+				
 			}
 			
 			cantRondasJugadas++;
@@ -115,32 +117,32 @@ public class Main {
                                " puntos de vida!!!"                         +
                                Formateo.RESET);
 			
-			if(puntosDeVidaBatallonMagos > puntosDeVidaBatallonMortifagos)
-			{
+			if(puntosDeVidaBatallonMagos > puntosDeVidaBatallonMortifagos) {
 				System.out.println(Formateo.DORADO_NEGRITA_CURSIVA + "Por lo que podríamos concluir que estadísticamente, los Magos ganarán la batalla!!!" + Formateo.RESET);
-			} else if(puntosDeVidaBatallonMagos < puntosDeVidaBatallonMortifagos)
-			{
+			} else if(puntosDeVidaBatallonMagos < puntosDeVidaBatallonMortifagos) {
 				System.out.println(Formateo.DORADO_NEGRITA_CURSIVA + "Por lo que podríamos concluir que estadísticamente, los Mortifagos ganarán la batalla!!!" + Formateo.RESET);
-			} else
-			{
+			} else {
 				System.out.println(Formateo.DORADO_NEGRITA_CURSIVA + "Por lo que no podríamos concluir quienes ganarán la batalla!!!" + Formateo.RESET);
 			}
-		} else
-		{
-			if(batallonDeMagos.hayPersonajesVivos())
-			{
+			
+		} else {
+			
+			if(batallonDeMagos.hayPersonajesVivos()) {
+				
 				System.out.println("-------------------------------------------------");
 				System.out.println("|                                               |");
 				System.out.println("|       ¡Los magos han ganado la batalla!       |");
 				System.out.println("|                                               |");
 				System.out.println("-------------------------------------------------");
-			} else
-			{
+				
+			} else {
+				
 				System.out.println("--------------------------------------------------");
 				System.out.println("|                                                |");
 				System.out.println("|     ¡Los mortifagos han ganado la batalla!     |");
 				System.out.println("|                                                |");
 				System.out.println("--------------------------------------------------");
+				
 			}
 		}
 		

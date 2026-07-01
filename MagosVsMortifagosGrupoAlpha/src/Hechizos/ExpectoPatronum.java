@@ -5,24 +5,20 @@ import Estados.EstadoRegeneracion;
 import Personajes.Personaje;
 
 public class ExpectoPatronum extends Hechizo {
+	
 	private static final double MULTIPLICADOR_DE_CURACION = 4.5;
 	private static final int TURNOS_REGENERACION = 2;
 	
 	@Override
-	public void ejecutar(Personaje lanzador, Personaje objetivo)
-	{
+	public void ejecutar(Personaje lanzador, Personaje objetivo) {
 		double curacion = lanzador.getNivelDeMagiaPatronus() * MULTIPLICADOR_DE_CURACION;
 		
-		if( (objetivo.getPuntosDeVida() + curacion) <= objetivo.getMaxPuntosDeVida())
-		{
+		if( (objetivo.getPuntosDeVida() + curacion) <= objetivo.getMaxPuntosDeVida()) {
 			objetivo.setPuntosDeVida(objetivo.getPuntosDeVida() + curacion);
-		} else
-		{
+		} else {
 			objetivo.setPuntosDeVida(objetivo.getMaxPuntosDeVida());
 		}
 
-		
-		
 		System.out.println(Formateo.ROJO_NEGRITA                          +
 		                   lanzador.getNombre()                           +
                            Formateo.RESET                                 +
@@ -43,4 +39,5 @@ public class ExpectoPatronum extends Hechizo {
 	public boolean esHechizoDeCuracion(){
 		return true;
 	}
+	
 }

@@ -4,7 +4,8 @@ import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public class EstadoInmune extends Estado {
-    public EstadoInmune(int turnosRestantes) {
+    
+	public EstadoInmune(int turnosRestantes) {
         super(turnosRestantes);
     }
 
@@ -31,4 +32,5 @@ public class EstadoInmune extends Estado {
     public String toString() {
         return "Inmunidad";
     }
+    
 }

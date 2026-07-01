@@ -4,6 +4,7 @@ import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public class EstadoRegeneracion extends Estado {
+	
     private static final double PUNTOS_A_CURAR = 1.0;
 
     public EstadoRegeneracion(int turnosRestantes) {
@@ -60,4 +61,5 @@ public class EstadoRegeneracion extends Estado {
     public String toString() {
         return "Regeneración";
     }
+    
 }

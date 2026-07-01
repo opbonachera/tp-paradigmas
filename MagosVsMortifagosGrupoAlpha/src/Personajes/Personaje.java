@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public abstract class Personaje {
+	
 	protected String nombre;
 	protected int nivelDeMagiaOcura;
 	protected int nivelDeMagiaPatronus;
@@ -16,12 +17,13 @@ public abstract class Personaje {
 	private final double maxPuntosDeVida;
 	private final Set<Estado> estados;
 	protected Set<Hechizo> hechizos;
+	private static final int CANT_DE_HECHIZOS_MAX = 3;
 	protected double escudoPuntosDeVida;
 	protected boolean escudoActivo;
 	private FabricaDeHechizos fabricaHechizos = new FabricaDeHechizos();
 
-	public Personaje(String nombre, double puntosDeVida, int nivelDeMagiaOscura, int nivelDeMagiaPatronus,
-			int nivelDeMagiaDefensiva) {
+	public Personaje(String nombre, double puntosDeVida, int nivelDeMagiaOscura, 
+			         int nivelDeMagiaPatronus, int nivelDeMagiaDefensiva) {
 		this.nombre = nombre;
 		this.nivelDeMagiaOcura = nivelDeMagiaOscura;
 		this.nivelDeMagiaPatronus = nivelDeMagiaPatronus;
@@ -33,74 +35,60 @@ public abstract class Personaje {
 		this.escudoActivo = false;
 		this.escudoPuntosDeVida = 0.0;
 		
-		for(int i = 0; i < 3; i++) // CAMBIAR EL 3 POR UNA CONSTANTE O VARIABLE Y ANALIZAR SI SE CREAN HECHIZOS POR CATEGORIAS
-		{
-			hechizos.add(fabricaHechizos.crearHechizo()); // revisar que no sean repetidos. Podemos usar un hashSet en vez de un ArrayList
+		for(int i = 0; i < CANT_DE_HECHIZOS_MAX; i++) {
+			hechizos.add(fabricaHechizos.crearHechizo());
 		}
 	}
 
-	public String getNombre()
-	{
+	public String getNombre() {
 		return this.nombre;
 	}
 	
-	public int getNivelDeMagiaOscura()
-	{
+	public int getNivelDeMagiaOscura() {
 		return this.nivelDeMagiaOcura;
 	}
 	
-	public int getNivelDeMagiaPatronus()
-	{
+	public int getNivelDeMagiaPatronus() {
 		return this.nivelDeMagiaPatronus;
 	}
 	
-	public int getNivelDeMagiaDefensiva()
-	{
+	public int getNivelDeMagiaDefensiva() {
 		return this.nivelDeMagiaDefensiva;
 	}
 	
-	public double getPuntosDeVida()
-	{
+	public double getPuntosDeVida() {
 		return this.puntosDeVida;
 	}
 	
-	public Set<Hechizo> getHechizos()
-	{
+	public Set<Hechizo> getHechizos() {
 		return this.hechizos;
 	}
 	
-	public boolean getEscudo()
-	{
+	public boolean getEscudo() {
 		return this.escudoActivo;
 	}
 	
-	public double getEscudoPuntosDeVida()
-	{
+	public double getEscudoPuntosDeVida() {
 		return this.escudoPuntosDeVida;
 	}
 	
-	public void setPuntosDeVida(double NewPuntosDeVida)
-	{
+	public void setPuntosDeVida(double NewPuntosDeVida) {
 		this.puntosDeVida = NewPuntosDeVida;
 	}
 	
-	public double getMaxPuntosDeVida()
-	{
+	public double getMaxPuntosDeVida() {
 		return this.maxPuntosDeVida;
 	}
 	
-	public void setEscudo(boolean activo)
-	{
+	public void setEscudo(boolean activo) {
 		this.escudoActivo = activo;
 	}
 	
-	public void setEscudoPuntosDeVida(double puntosDeVidaEscudo)
-	{
+	public void setEscudoPuntosDeVida(double puntosDeVidaEscudo) {
 		this.escudoPuntosDeVida = puntosDeVidaEscudo;
 	}
 
-	public void agregarEstado(Estado estado)
-	{
+	public void agregarEstado(Estado estado) {
 		this.estados.add(estado);
 		System.out.println(Formateo.GRIS_CLARITO_CURSIVA          +
 				           "\t  --->  "                           +
@@ -115,39 +103,29 @@ public abstract class Personaje {
 				           Formateo.RESET);
 	}
 
-	public boolean estaInmune()
-	{
-		for(Estado estado : this.estados)
-		{
-			if(estado.bloqueaDanio())
-			{
+	public boolean estaInmune() {
+		for(Estado estado : this.estados) {
+			if(estado.bloqueaDanio()) {
 				return true;
 			}
 		}
-
 		return false;
 	}
 
-	public void procesarEstadosInicioDelTurno()
-	{
-		for(Estado estado : this.estados)
-		{
+	public void procesarEstadosInicioDelTurno() {
+		for(Estado estado : this.estados) {
 			estado.aplicarAlInicioDelTurno(this);
 		}
 	}
 
-	public void procesarEstadosFinDelTurno()
-	{
-		for(Estado estado : this.estados)
-		{
+	public void procesarEstadosFinDelTurno() {
+		for(Estado estado : this.estados) {
 			estado.aplicarAlFinalDelTurno(this);
 			estado.consumirTurno();
 		}
 
-		for(Estado estado : this.estados)
-		{
-			if(estado.estaObsoleto())
-			{
+		for(Estado estado : this.estados) {
+			if(estado.estaObsoleto()) {
 				estado.alCaducar(this);
 			}
 		}
@@ -155,8 +133,7 @@ public abstract class Personaje {
 		this.estados.removeIf(Estado::estaObsoleto);
 	}
 
-	public boolean estaVivo()
-	{
+	public boolean estaVivo() {
 		return puntosDeVida > 0d;
 	}
 	

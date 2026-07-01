@@ -5,14 +5,14 @@ import Estados.EstadoInmune;
 import Personajes.Personaje;
 
 public class Protego extends Hechizo {
+	
 	private static final double PUNTOS_DE_VIDA_ESCUDO = 10.0;
 	private static final int TURNOS_INMUNE = 1;
 	
 	@Override
-	public void ejecutar(Personaje lanzador, Personaje objetivo)
-	{
+	public void ejecutar(Personaje lanzador, Personaje objetivo) {
 		objetivo.setEscudo(true);
-		objetivo.setEscudoPuntosDeVida(PUNTOS_DE_VIDA_ESCUDO); // Yo haría objetivo.getEscudoPuntosDeVida + PUNTOS_DE_VIDA_ESCUDO.
+		objetivo.setEscudoPuntosDeVida(PUNTOS_DE_VIDA_ESCUDO);
 		
 		System.out.println(Formateo.ROJO_NEGRITA                                               + 
 			               lanzador.getNombre()                                                + 
@@ -26,7 +26,8 @@ public class Protego extends Hechizo {
 	}
 
 	@Override
-	public boolean esHechizoDeCuracion(){
+	public boolean esHechizoDeCuracion() {
 		return true;
 	}
+	
 }

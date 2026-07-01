@@ -4,6 +4,7 @@ import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public abstract class Estado {
+	
     protected int turnosRestantes;
 
     protected Estado(int turnosRestantes) {
@@ -45,8 +46,13 @@ public abstract class Estado {
     }
     
     @Override
-    public int hashCode() {return getClass().hashCode();}
+    public int hashCode() {
+    	return getClass().hashCode();
+    }
     
     @Override
-    public boolean equals(Object o) { return (o != null) && (o.getClass() == this.getClass()); }
+    public boolean equals(Object o) {
+    	return (o != null) && (o.getClass() == this.getClass());
+    }
+    
 }

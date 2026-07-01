@@ -6,22 +6,32 @@ import java.util.Set;
 
 public class FabricaDePersonajes {
 	
-    private static final String[] nombresGenericosMagos = {
-            "Albus Shacklebolt", "Garrick Ollivander", "Minerva Flitwick", 
-            "Remus Diggory", "Sybill Vector", "Pomona Sprout", 
-            "Phineas Black", "Celestina Warbeck", "Gideon Prewett", "Dorcas Meadowes"
-    }; 
-    private static final String[] nombresGenericosMortifagos = {
-            "Lucius Malfoy", "Bellatrix Lestrange", "Antonin Dolohov", 
-            "Corban Yaxley", "Thorfinn Rowle", "Bartemius Crouch Jr", 
-            "Regulus Black", "Evan Rosier", "Walden Macnair", "Augustus Rookwood"
-    };
+    private static final String[] nombresGenericosMagos = {"Albus Shacklebolt", 
+    		                                               "Garrick Ollivander", 
+    		                                               "Minerva Flitwick", 
+    		                                               "Remus Diggory", 
+    		                                               "Sybill Vector", 
+    		                                               "Pomona Sprout", 
+    		                                               "Phineas Black", 
+    		                                               "Celestina Warbeck", 
+    		                                               "Gideon Prewett", 
+    		                                               "Dorcas Meadowes"}; 
+    
+    private static final String[] nombresGenericosMortifagos = {"Lucius Malfoy", 
+    		                                                    "Bellatrix Lestrange", 
+    		                                                    "Antonin Dolohov", 
+    		                                                    "Corban Yaxley", 
+    		                                                    "Thorfinn Rowle", 
+    		                                                    "Bartemius Crouch Jr", 
+    		                                                    "Regulus Black", 
+    		                                                    "Evan Rosier", 
+    		                                                    "Walden Macnair", 
+    		                                                    "Augustus Rookwood"};
 
     private final Set<Personaje> personajesCreados = new HashSet<>();
     private final Random random = new Random();
 
-    public Personaje crearMago() 
-    {
+    public Personaje crearMago() {
     	int cantIntentosCrearMagos = 0;
     	
     	while (cantIntentosCrearMagos < nombresGenericosMagos.length) {

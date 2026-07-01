@@ -4,6 +4,7 @@ import FormatoDeTexto.Formateo;
 import Personajes.Personaje;
 
 public class EstadoSangrando extends Estado {
+	
     private static final double PUNTOS_DE_DANIO = 0.5;
 
     public EstadoSangrando(int turnosRestantes) {
@@ -59,4 +60,5 @@ public class EstadoSangrando extends Estado {
     public String toString() {
         return "Sangrando";
     }
+    
 }
