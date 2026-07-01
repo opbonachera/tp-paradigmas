@@ -1,94 +1,89 @@
 package Personajes;
 
 import java.util.Random;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FabricaDePersonajes {
 	
-    private static final String[] nombresGenericosMagos = {"Albus Shacklebolt", 
-    		                                               "Garrick Ollivander", 
-    		                                               "Minerva Flitwick", 
-    		                                               "Remus Diggory", 
-    		                                               "Sybill Vector", 
-    		                                               "Pomona Sprout", 
-    		                                               "Phineas Black", 
-    		                                               "Celestina Warbeck", 
-    		                                               "Gideon Prewett", 
-    		                                               "Dorcas Meadowes"}; 
-    
-    private static final String[] nombresGenericosMortifagos = {"Lucius Malfoy", 
-    		                                                    "Bellatrix Lestrange", 
-    		                                                    "Antonin Dolohov", 
-    		                                                    "Corban Yaxley", 
-    		                                                    "Thorfinn Rowle", 
-    		                                                    "Bartemius Crouch Jr", 
-    		                                                    "Regulus Black", 
-    		                                                    "Evan Rosier", 
-    		                                                    "Walden Macnair", 
-    		                                                    "Augustus Rookwood"};
-
-    private final Set<Personaje> personajesCreados = new HashSet<>();
-    private final Random random = new Random();
+	private static final List<String> nombresGenericosMagos = new ArrayList<>();
+	private static final List<String> nombresGenericosMortifagos = new ArrayList<>();
+	private final Random random = new Random();
+	
+	public FabricaDePersonajes() { // Cuando creo la fabrica de personajes, cargo en los ArrayLists correspondientes, nombres genericos para los personajes
+		cargarListaNombresGenericosMagos(nombresGenericosMagos);
+		cargarListaNombresGenericosMortifagos(nombresGenericosMortifagos);
+	}
 
     public Personaje crearMago() {
-    	int cantIntentosCrearMagos = 0;
     	
-    	while (cantIntentosCrearMagos < nombresGenericosMagos.length) {
-            int nombreAleatorio = random.nextInt(nombresGenericosMagos.length);
+    	while (nombresGenericosMagos.size() > 0) {
+            int posNombreAleatorio = random.nextInt(nombresGenericosMagos.size());
+            String nombreAleatorio = nombresGenericosMagos.get(posNombreAleatorio);
+            nombresGenericosMagos.remove(posNombreAleatorio);
+            
             int tipoAleatorio = random.nextInt(3); 
             
-            Personaje nuevoMago;
             switch (tipoAleatorio) {
-                case 0: 
-                    nuevoMago = new Estudiante(nombresGenericosMagos[nombreAleatorio]);
-                    break;
-                case 1: 
-                    nuevoMago = new Profesor(nombresGenericosMagos[nombreAleatorio]);
-                    break;
-                case 2: 
-                    nuevoMago = new Auror(nombresGenericosMagos[nombreAleatorio]);
-                    break;
-                default: 
-                    throw new IllegalStateException("No se pudo crear el Mago!!!"); 
+                case 0:  return new Estudiante(nombreAleatorio);
+                case 1:  return new Profesor(nombreAleatorio);
+                case 2:  return new Auror(nombreAleatorio);
+                default: throw new IllegalStateException("No se pudo crear el Mago!!!"); 
             }
-
-            if (personajesCreados.add(nuevoMago)) {
-                return nuevoMago;
-            }
-
-            cantIntentosCrearMagos++;
         }
-
+    	
         throw new IllegalStateException("¡No se pueden crear más Magos únicos! Todos los nombres disponibles ya están en uso.");
+    
     }
     
     public Personaje crearMortifago() {
-    	int cantIntentosCrearMortifagos = 0;
     	
-    	while (cantIntentosCrearMortifagos < nombresGenericosMortifagos.length) {
-            int nombreAleatorio = random.nextInt(nombresGenericosMortifagos.length);
-            int tipoAleatorio = random.nextInt(2); 
+    	while (nombresGenericosMortifagos.size() > 0) {
+            int posNombreAleatorio = random.nextInt(nombresGenericosMortifagos.size());
+            String nombreAleatorio = nombresGenericosMortifagos.get(posNombreAleatorio);
+            nombresGenericosMortifagos.remove(posNombreAleatorio);
             
-            Personaje nuevoMortifago;
+            int tipoAleatorio = random.nextInt(3); 
+            
             switch (tipoAleatorio) {
-                case 0: 
-                    nuevoMortifago = new Seguidor(nombresGenericosMortifagos[nombreAleatorio]);
-                    break;
-                case 1: 
-                    nuevoMortifago = new Comandante(nombresGenericosMortifagos[nombreAleatorio]);
-                    break;
-                default: 
-                    throw new IllegalStateException("No se pudo crear el Mortifago!!!"); 
+                case 0:  return new Estudiante(nombreAleatorio);
+                case 1:  return new Profesor(nombreAleatorio);
+                case 2:  return new Auror(nombreAleatorio);
+                default: throw new IllegalStateException("No se pudo crear el Mortifago!!!"); 
             }
-
-            if (personajesCreados.add(nuevoMortifago)) {
-                return nuevoMortifago;
-            }
-
-            cantIntentosCrearMortifagos++;
         }
-
+    	
         throw new IllegalStateException("¡No se pueden crear más Mortifagos únicos! Todos los nombres disponibles ya están en uso.");
+    
     }
+    
+    private void cargarListaNombresGenericosMagos(List<String> nombresGenericosMagos) {
+    	nombresGenericosMagos.add("Albus Shacklebolt");
+    	nombresGenericosMagos.add("Garrick Ollivander");
+    	nombresGenericosMagos.add("Minerva Flitwick");
+    	nombresGenericosMagos.add("Remus Diggory");
+    	nombresGenericosMagos.add("Sybill Vector");
+    	nombresGenericosMagos.add("Pomona Sprout");
+    	nombresGenericosMagos.add("Phineas Black");
+    	nombresGenericosMagos.add("Celestina Warbeck");
+    	nombresGenericosMagos.add("Gideon Prewett");
+    	nombresGenericosMagos.add("Dorcas Meadowes");
+    }
+    
+    private void cargarListaNombresGenericosMortifagos(List<String> nombresGenericosMortifagos) {
+    	nombresGenericosMortifagos.add("Lucius Malfoy");
+    	nombresGenericosMortifagos.add("Bellatrix Lestrange");
+    	nombresGenericosMortifagos.add("Antonin Dolohov");
+    	nombresGenericosMortifagos.add("Corban Yaxley");
+    	nombresGenericosMortifagos.add("Thorfinn Rowle");
+    	nombresGenericosMortifagos.add("Bartemius Crouch Jr");
+    	nombresGenericosMortifagos.add("Regulus Black");
+    	nombresGenericosMortifagos.add("Evan Rosier");
+    	nombresGenericosMortifagos.add("Walden Macnair");
+    	nombresGenericosMortifagos.add("Augustus Rookwood");
+    }
+    
 }
+
+
+
